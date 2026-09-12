@@ -18,7 +18,7 @@ The development Docker image sets `SUPPORT_K_DOCUMENT_ROOT=/var/www/html/public`
 
 ```sh
 docker build -f packaging/dev/Dockerfile -t support-k-dev .
-docker run --rm -v support-k-writable:/var/www/html/writable --entrypoint sh support-k-dev -c 'chown -R www-data:www-data /var/www/html/writable'
+docker run --rm -v support-k-writable:/var/www/html/writable --entrypoint sh support-k-dev -c 'for directory in cache logs session uploads extensions; do mkdir -p /var/www/html/writable/$directory; done; chown -R www-data:www-data /var/www/html/writable'
 docker run --rm -p 127.0.0.1:8080:8080 -e SUPPORT_K_HTTP_PORT=8080 -e SUPPORT_K_ALLOW_HTTP=1 -v "$PWD":/var/www/html -v support-k-writable:/var/www/html/writable support-k-dev
 ```
 
