@@ -128,8 +128,10 @@ _modules/*
 # Support K installation state and upload challenges
 /writable/config.php
 /writable/config.php.*
+/writable/.config-*
 /writable/installed.lock
 /writable/install.mutex
 /writable/extensions/
 /public/support-k-install-proof.txt
-/public/support-k-protection-*.txt
+/public/support-k-probe-*.txt
+/writable/support-k-probe-*.txt

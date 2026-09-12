@@ -1,0 +1,13 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^_supportk(?:/|$) - [F,L,NC]
+    RewriteRule (^|/)\. - [F,L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+<FilesMatch "(?i)\.(?:env|log|sql|sqlite|bak|ini)$">
+    Require all denied
+</FilesMatch>
