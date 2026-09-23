@@ -30,7 +30,7 @@ jobs:
         with:
           php-version: '8.2'
           extensions: intl, mbstring, sqlite3, pdo_sqlite, curl, zip
-          tools: composer:2.8
+          tools: composer:2
           coverage: none
 
       - name: Validate Composer metadata
@@ -103,7 +103,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: intl, mbstring, mysqli, pdo_mysql, curl, zip
-          tools: composer:2.8
+          tools: composer:2
           coverage: none
 
       - name: Validate Composer metadata
@@ -137,7 +137,7 @@ jobs:
         with:
           php-version: '8.4'
           extensions: intl, mbstring, curl, zip
-          tools: composer:2.8
+          tools: composer:2
           coverage: none
 
       - name: Install production dependencies
