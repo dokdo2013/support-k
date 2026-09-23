@@ -161,12 +161,15 @@ jobs:
           test -d dist
           test -n "$(find dist -maxdepth 1 -type f -name '*.zip' -print -quit)"
           php packaging/verify.php dist/support-k-0.1.0-alpha.1.zip
-          (cd dist && sha256sum -c support-k-0.1.0-alpha.1.zip.sha256)
+          php packaging/verify.php dist/support-k-0.1.0-alpha.1-split-root.zip
+          (cd dist && sha256sum -c support-k-0.1.0-alpha.1.zip.sha256 && sha256sum -c support-k-0.1.0-alpha.1-split-root.zip.sha256)
 
       - name: Upload CI artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: support-k-install-zip
-          path: dist/*.zip
+          path: |
+            dist/*.zip
+            dist/*.zip.sha256
           if-no-files-found: error
           retention-days: 3

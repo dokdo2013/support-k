@@ -41,6 +41,33 @@ function removeStage(string $path): void
     rmdir($path);
 }
 
+function writePackage(string $stage, string $zipPath): void
+{
+    $manifestPath = $stage . '/_supportk/manifest.json';
+    if (is_file($manifestPath)) unlink($manifestPath);
+    $manifest = [];
+    $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($stage, FilesystemIterator::SKIP_DOTS));
+    foreach ($files as $file) {
+        if (!$file->isFile()) continue;
+        $path = str_replace(DIRECTORY_SEPARATOR, '/', substr($file->getPathname(), strlen($stage) + 1));
+        if (preg_match('~(?:^|/)(?:\.git|tests|config\.php|installed\.lock|\.env)(?:/|$)~', $path)) throw new RuntimeException('Forbidden release file: ' . $path);
+        $manifest[$path] = hash_file('sha256', $file->getPathname());
+    }
+    ksort($manifest);
+    file_put_contents($manifestPath, json_encode($manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n");
+    $zip = new ZipArchive();
+    if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) throw new RuntimeException('Could not create ZIP.');
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($stage, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
+    foreach ($iterator as $file) {
+        $relative = str_replace(DIRECTORY_SEPARATOR, '/', substr($file->getPathname(), strlen($stage) + 1));
+        if ($file->isDir()) $zip->addEmptyDir($relative);
+        else $zip->addFile($file->getPathname(), $relative);
+    }
+    if (!$zip->close()) throw new RuntimeException('Could not finish ZIP.');
+    file_put_contents($zipPath . '.sha256', hash_file('sha256', $zipPath) . '  ' . basename($zipPath) . "\n");
+    fwrite(STDOUT, 'Built ' . basename($zipPath) . ' (' . filesize($zipPath) . " bytes)\n");
+}
+
 try {
     // Positive input list. Runtime, tests, original sources and history are never copied.
     foreach (['app', 'bootstrap', 'modules', 'composer.json', 'composer.lock', 'LICENSE', 'THIRD_PARTY_NOTICES.md'] as $path) {
@@ -65,28 +92,23 @@ try {
     $lock = json_decode(file_get_contents($root . '/composer.lock'), true, flags: JSON_THROW_ON_ERROR);
     $components = array_map(static fn (array $package) => ['name' => $package['name'], 'version' => $package['version'], 'license' => $package['license'] ?? [], 'source' => $package['source'] ?? []], $lock['packages']);
     file_put_contents($release . '/release.json', json_encode(['product' => 'Support K', 'version' => $version, 'php' => '>=8.2', 'components' => $components], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n");
-    $manifest = [];
-    $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($stage, FilesystemIterator::SKIP_DOTS));
-    foreach ($files as $file) {
-        if (!$file->isFile()) continue;
-        $path = str_replace(DIRECTORY_SEPARATOR, '/', substr($file->getPathname(), strlen($stage) + 1));
-        if (preg_match('~(?:^|/)(?:\.git|tests|config\.php|installed\.lock|\.env)(?:/|$)~', $path)) throw new RuntimeException('Forbidden release file: ' . $path);
-        $manifest[$path] = hash_file('sha256', $file->getPathname());
+    writePackage($stage, $dist . '/support-k-' . $version . '.zip');
+
+    $splitStage = $dist . '/stage-' . bin2hex(random_bytes(8));
+    try {
+        mkdir($splitStage, 0755, true);
+        copyTree($private, $splitStage . '/_supportk');
+        copyTree($stage . '/assets', $splitStage . '/public/assets');
+        copyTree($stage . '/.htaccess', $splitStage . '/public/.htaccess');
+        copyTree(__DIR__ . '/split-entry.php', $splitStage . '/public/index.php');
+        copyTree(__DIR__ . '/entry.php', $splitStage . '/_supportk/entry.php');
+        foreach (['LICENSE', 'THIRD_PARTY_NOTICES.md', 'INSTALL.md'] as $path) {
+            if (is_file($stage . '/' . $path)) copyTree($stage . '/' . $path, $splitStage . '/' . $path);
+        }
+        writePackage($splitStage, $dist . '/support-k-' . $version . '-split-root.zip');
+    } finally {
+        if (is_dir($splitStage)) removeStage($splitStage);
     }
-    ksort($manifest);
-    file_put_contents($private . '/manifest.json', json_encode($manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n");
-    $zipPath = $dist . '/support-k-' . $version . '.zip';
-    $zip = new ZipArchive();
-    if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) throw new RuntimeException('Could not create ZIP.');
-    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($stage, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
-    foreach ($iterator as $file) {
-        $relative = str_replace(DIRECTORY_SEPARATOR, '/', substr($file->getPathname(), strlen($stage) + 1));
-        if ($file->isDir()) $zip->addEmptyDir($relative);
-        else $zip->addFile($file->getPathname(), $relative);
-    }
-    if (!$zip->close()) throw new RuntimeException('Could not finish ZIP.');
-    file_put_contents($zipPath . '.sha256', hash_file('sha256', $zipPath) . '  ' . basename($zipPath) . "\n");
-    fwrite(STDOUT, 'Built ' . basename($zipPath) . ' (' . filesize($zipPath) . " bytes)\n");
 } finally {
     removeStage($stage);
 }

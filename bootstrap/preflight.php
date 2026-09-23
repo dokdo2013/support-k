@@ -2,6 +2,12 @@
 // This file intentionally runs before Composer and CodeIgniter.
 require_once __DIR__ . '/runtime-config-schema.php';
 $supportKFailures = array();
+if (defined('SUPPORT_K_PACKAGE_PUBLIC') && PHP_SAPI !== 'cli') {
+    $supportKDocumentRoot = realpath((string) ($_SERVER['DOCUMENT_ROOT'] ?? ''));
+    if ($supportKDocumentRoot === false || $supportKDocumentRoot !== realpath(SUPPORT_K_PACKAGE_PUBLIC)) {
+        $supportKFailures[] = '이 설치 ZIP은 웹 문서 루트를 public 폴더로 지정해야 합니다. 호스팅의 document root 설정을 확인해 주세요.';
+    }
+}
 if (version_compare(PHP_VERSION, '8.2.0', '<')) {
     $supportKFailures[] = 'PHP 8.2 이상이 필요합니다. 호스팅 설정에서 PHP 버전을 변경해 주세요.';
 }
@@ -41,4 +47,4 @@ if ($supportKFailures) {
     echo '</ul><p>호스팅 관리 화면에서 설정한 뒤 이 페이지를 새로고침해 주세요.</p></main></body></html>';
     exit;
 }
-unset($supportKFailures, $supportKExtension, $supportKShared, $supportKConfig, $supportKError);
+unset($supportKFailures, $supportKExtension, $supportKShared, $supportKConfig, $supportKError, $supportKDocumentRoot);

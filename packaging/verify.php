@@ -119,7 +119,14 @@ final class PackageVerifier
      */
     private function verifyLayout(ZipArchive $zip, array $entries): void
     {
-        foreach (['index.php', '.htaccess', '_supportk/.htaccess', '_supportk/shared/.htaccess', '_supportk/active.json', '_supportk/manifest.json'] as $required) {
+        $splitRoot = isset($entries['public/index.php']);
+        if ($splitRoot && isset($entries['index.php'])) {
+            throw new RuntimeException('Package must have exactly one public entry point.');
+        }
+        $publicFiles = $splitRoot
+            ? ['public/index.php', 'public/.htaccess', '_supportk/entry.php']
+            : ['index.php', '.htaccess'];
+        foreach (array_merge($publicFiles, ['_supportk/.htaccess', '_supportk/shared/.htaccess', '_supportk/active.json', '_supportk/manifest.json']) as $required) {
             $this->requireFile($entries, $required);
         }
         foreach (self::RUNTIME_DIRECTORIES as $required) {

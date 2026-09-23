@@ -35,6 +35,24 @@ final class PackageVerifyTest extends TestCase
         $this->assertFileExists($archive);
     }
 
+    public function testAcceptsSplitDocumentRootPackage(): void
+    {
+        $archive = $this->createPackage(true);
+
+        (new PackageVerifier())->verify($archive);
+        $this->assertFileExists($archive);
+    }
+
+    public function testRejectsSplitPackageWithPublicPrivateEntry(): void
+    {
+        $archive = $this->createPackage(true);
+        $zip = $this->open($archive);
+        $this->assertTrue($zip->addFromString('index.php', '<?php'));
+        $zip->close();
+
+        $this->assertRejected($archive, 'exactly one public entry point');
+    }
+
     public function testRejectsPathTraversalEntry(): void
     {
         $archive = $this->createPackage();
@@ -66,7 +84,7 @@ final class PackageVerifyTest extends TestCase
         $this->assertRejected($archive, 'Manifest file list');
     }
 
-    private function createPackage(): string
+    private function createPackage(bool $splitRoot = false): string
     {
         $version = '0.1.0-alpha.1';
         $releaseRoot = '_supportk/releases/' . $version . '/';
@@ -99,8 +117,6 @@ final class PackageVerifyTest extends TestCase
         ], $packages);
 
         $files = [
-            'index.php' => '<?php echo "Support K";',
-            '.htaccess' => 'DirectoryIndex index.php',
             '_supportk/.htaccess' => 'Require all denied',
             '_supportk/shared/.htaccess' => 'Require all denied',
             '_supportk/active.json' => json_encode(['version' => $version], JSON_THROW_ON_ERROR),
@@ -113,6 +129,14 @@ final class PackageVerifyTest extends TestCase
             ], JSON_THROW_ON_ERROR),
             $releaseRoot . 'vendor/autoload.php' => '<?php',
         ];
+        if ($splitRoot) {
+            $files['public/index.php'] = '<?php require dirname(__DIR__) . "/_supportk/entry.php";';
+            $files['public/.htaccess'] = 'DirectoryIndex index.php';
+            $files['_supportk/entry.php'] = '<?php echo "Support K";';
+        } else {
+            $files['index.php'] = '<?php echo "Support K";';
+            $files['.htaccess'] = 'DirectoryIndex index.php';
+        }
         $manifest = [];
         foreach ($files as $name => $contents) {
             $manifest[$name] = hash('sha256', $contents);

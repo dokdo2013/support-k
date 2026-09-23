@@ -9,10 +9,10 @@ Support K is an MIT-licensed, self-hosted customer support application for PHP h
 - the browser installer completed its upload proof, database setup, Owner creation, and recovery-code display;
 - a customer submitted a ticket without email delivery, staff replied, staff added a private note, and the customer sent a follow-up;
 - public, draft, and internal knowledge records passed create, update, delete, search, and stale-content HTTP checks;
-- the release ZIP is about 1.6 MB, installs its three runtime packages separately with `composer install --no-dev`, and passes the package manifest and SHA-256 checks;
+- the original release ZIP is about 1.6 MB, installs its three runtime packages separately with `composer install --no-dev`, and passes the package manifest and SHA-256 checks;
 - the ZIP passed local Apache HTTP installation checks both at the document root and below `/support/`, including eight ticket cases, private-area blocking, and versioned CSS loading.
 
-These ZIP checks used PHP 8.4.25 and MariaDB 10.11. Public HTTPS deployment and a real Cafe24 host remain unverified. The proof does not establish support for every PHP host, web server, database version, or hosting plan.
+These HTTP checks used PHP 8.4.25 and MariaDB 10.11. A second ZIP with a separate `public/` document root builds and passes package verification; a local PHP 8.2 smoke test reached `/setup`, denied a private file, and rejected a wrong document root. It has not yet had a real-host installation check. Public HTTPS deployment remains unverified. The proof does not establish support for every PHP host, web server, database version, or hosting plan.
 
 This alpha is suitable for development evaluation. Do not put production customer data into it until the target host has been tested and a backup and recovery procedure has been rehearsed.
 
@@ -20,7 +20,7 @@ This alpha is suitable for development evaluation. Do not put production custome
 
 The foundation currently includes the browser installation flow, the first Owner account and one-time recovery code, customer tickets and staff replies and private notes, knowledge content with public, draft, and internal visibility, internal domain events and delivery jobs, extension contracts, and the example notifier extension. The release builder, source audit, and ZIP verifier are part of the development and release checks.
 
-The following remain outside this alpha: attachments, custom forms, an Agent account management UI, AI provider connections, real email notifications, extension management UI, in-app updating, and a tested Cafe24 deployment. The existing delivery and extension contracts do not mean that a provider or hosting integration is ready for use.
+The following remain outside this alpha: attachments, custom forms, an Agent account management UI, AI provider connections, real email notifications, extension management UI, in-app updating, and a tested commercial shared-host deployment. The existing delivery and extension contracts do not mean that a provider or hosting integration is ready for use.
 
 ## Requirements
 
@@ -30,13 +30,13 @@ Use HTTPS for an installation and for normal operation. The application rejects 
 
 ## Install a release ZIP
 
-Start with [docs/installation.md](docs/installation.md). A host operator uploads the completed ZIP by FTP or the host file manager, extracts it into the selected document root, creates an empty MariaDB database and user, and opens `/setup` over HTTPS. The installer asks for a one-time upload proof, database details, the site URL, and the first Owner credentials. It displays a one-time recovery code after a successful install.
+Start with [docs/installation.md](docs/installation.md). Choose the split-root ZIP when the host lets you set the document root to `public/`; choose the original fixed-root ZIP for Apache hosting that applies the included `.htaccess`. Upload the ZIP by FTP or the host file manager, create an empty MariaDB database and user, and open `/setup` over HTTPS. The installer asks for a one-time upload proof, database details, the site URL, and the first Owner credentials. It displays a one-time recovery code after a successful install.
 
-The package document root is the extracted ZIP root: it contains `index.php`, `.htaccess`, `assets/`, and `_supportk/`. Keep the upload complete, including `_supportk/`; do not expose directory listings. The package's Apache rules deny direct access to private release and runtime files.
+The split-root ZIP keeps `_supportk/` beside `public/`, outside the web document root. The original ZIP uses its extracted root as the document root and relies on Apache rules to block `_supportk/`. Keep every packaged file and disable directory listings. Both layouts need URL rewriting to `index.php`.
 
 ## Development
 
-The source document root is `public/`, while the repository root contains the application and development tools. The development Docker image sets `SUPPORT_K_DOCUMENT_ROOT=/var/www/html/public`. The packaged ZIP uses its extracted root as the document root and has its own root `index.php` entry point.
+The source document root is `public/`, while the repository root contains the application and development tools. The development Docker image sets `SUPPORT_K_DOCUMENT_ROOT=/var/www/html/public`. The fixed-root ZIP serves from its extracted root; the split-root ZIP serves from its `public/` directory.
 
 ```sh
 docker build -f packaging/dev/Dockerfile -t support-k-dev .

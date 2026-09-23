@@ -1,6 +1,7 @@
 <?php
 // Stable entry point for FTP installations. Application code stays private.
-$supportKPrivate = __DIR__ . '/_supportk';
+$supportKPublic = defined('SUPPORT_K_PACKAGE_PUBLIC') ? SUPPORT_K_PACKAGE_PUBLIC : __DIR__;
+$supportKPrivate = defined('SUPPORT_K_PACKAGE_PUBLIC') ? __DIR__ : __DIR__ . '/_supportk';
 $supportKActive = json_decode((string) @file_get_contents($supportKPrivate . '/active.json'), true);
 $supportKVersion = is_array($supportKActive) ? ($supportKActive['version'] ?? '') : '';
 if (!is_string($supportKVersion) || !preg_match('/^\d+\.\d+\.\d+(?:-[a-z0-9.]+)?$/D', $supportKVersion)) {
@@ -11,7 +12,7 @@ if (!is_string($supportKVersion) || !preg_match('/^\d+\.\d+\.\d+(?:-[a-z0-9.]+)?
 $supportKRelease = $supportKPrivate . '/releases/' . $supportKVersion;
 define('SUPPORT_K_SHARED', $supportKPrivate . '/shared');
 define('SUPPORT_K_RELEASE', $supportKVersion);
-define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+define('FCPATH', $supportKPublic . DIRECTORY_SEPARATOR);
 require $supportKRelease . '/bootstrap/preflight.php';
 require $supportKRelease . '/app/Config/Paths.php';
 $paths = new \Config\Paths();
