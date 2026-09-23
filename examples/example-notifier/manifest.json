@@ -1,0 +1,24 @@
+{
+  "id": "example/notifier",
+  "name": "Example Notification Channel",
+  "version": "0.1.0",
+  "license": "MIT",
+  "requires": {
+    "core": ">=0.1.0 <1.0.0",
+    "php": ">=8.2.0 <8.5.0"
+  },
+  "entrypoint": {
+    "file": "src/ExampleNotifierExtension.php",
+    "class": "SupportK\\Examples\\Notifier\\ExampleNotifierExtension"
+  },
+  "settings": {
+    "label": {
+      "type": "text",
+      "required": false
+    }
+  },
+  "provides": ["notification-channel"],
+  "events": ["ticket.created"],
+  "permissions": [],
+  "dependencies": {}
+}

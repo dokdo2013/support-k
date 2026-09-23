@@ -1,0 +1,19 @@
+{
+  "id": "supportk/mock-notifier",
+  "name": "Support K Mock Notifier",
+  "version": "0.1.0",
+  "license": "MIT",
+  "requires": {
+    "core": ">=0.1.0 <1.0.0",
+    "php": ">=8.2.0 <8.5.0"
+  },
+  "entrypoint": {
+    "file": "src/MockNotifierExtension.php",
+    "class": "SupportK\\Modules\\MockNotifier\\MockNotifierExtension"
+  },
+  "settings": {},
+  "provides": ["notification-channel"],
+  "events": ["ticket.created", "ticket.message_posted", "ticket.status_changed"],
+  "permissions": [],
+  "dependencies": {}
+}

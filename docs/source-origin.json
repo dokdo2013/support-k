@@ -1,0 +1,1073 @@
+{
+  "description": "Initial source provenance snapshot. Runtime dependencies are tracked separately by composer.lock. Subsequent edits are recorded in Git history.",
+  "upstream": {
+    "name": "codeigniter4/appstarter",
+    "version": "v4.7.4",
+    "commit": "8d252c8f594921ec4629bbb253f9f2e8921b9e93",
+    "license": "MIT",
+    "source": "https://github.com/codeigniter4/appstarter"
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "origin": "upstream-adapted",
+      "sha256": "3dab4ba3ad7f04b1ec27b207ff3b57713baf0e2531cab63d5fd974b7d6c28ce8",
+      "upstream_blob": "56b9f10d916042910b0c82b6997a4d495f368629"
+    },
+    {
+      "path": "AGENTS.md",
+      "origin": "new-authored",
+      "sha256": "2d536edc170ad5db4d266f74f4dd4deca024739089d8f4765bf5e45e48e9abb0"
+    },
+    {
+      "path": "LICENSE",
+      "origin": "upstream-adapted",
+      "sha256": "aa3aa80935c147452c5039da7f8b4f48644269aadd86014b34ec1ed36bdc6752",
+      "upstream_blob": "24728f607f027ad73b83da57b159030135d547c1"
+    },
+    {
+      "path": "README.md",
+      "origin": "upstream-adapted",
+      "sha256": "a1f616f5e8a61570b249f0f0e806a7286ccf1bac509834e531c431add3dbefb9",
+      "upstream_blob": "45f98af6033ee84e0476ccbcedaef2a5df72f242"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "origin": "new-authored",
+      "sha256": "3f732ae0258b9fb1dde3d7dcae0acfa9aac6acc61d4ded92c8813fe286b17328"
+    },
+    {
+      "path": "app/.htaccess",
+      "origin": "upstream-unmodified",
+      "sha256": "66d7bf6151b5085af019d2473254f2827360b94b3c37a73d7837e89d435acdb6",
+      "upstream_blob": "3462048add78cbd6613527fb8aee3cd1d6cc6569"
+    },
+    {
+      "path": "app/Common.php",
+      "origin": "upstream-unmodified",
+      "sha256": "6dce94fb27734bb1826cd56dab9124f0436d7286d3e306bfc5862d8f200c85fd",
+      "upstream_blob": "95f55442523605b13cddf7e3292a7862814f77e1"
+    },
+    {
+      "path": "app/Config/App.php",
+      "origin": "upstream-adapted",
+      "sha256": "088cf553c090ef58996bafc719a5a3bd42ca161506850705089103d838d9e24b",
+      "upstream_blob": "b761da772ad10a50fd5d597e059e7773ea434405"
+    },
+    {
+      "path": "app/Config/Autoload.php",
+      "origin": "upstream-unmodified",
+      "sha256": "63a302be96cb618904cacc4f5664afd56faa878331cfdc686ff31d8860b328a1",
+      "upstream_blob": "9a928241a0eb82875ccbad7be6514f956e4ea8c9"
+    },
+    {
+      "path": "app/Config/Boot/development.php",
+      "origin": "upstream-unmodified",
+      "sha256": "026239a48e21ac1caefaaaf8e9331dbf5523798c2b5c2c004295ceee0a70fa8b",
+      "upstream_blob": "a868447a8e37b75ccab1f4963ff68d5607eb5877"
+    },
+    {
+      "path": "app/Config/Boot/production.php",
+      "origin": "upstream-unmodified",
+      "sha256": "24389b89227f83219e94a33b0c46db387764d6bf579fba246aad9179aaab850d",
+      "upstream_blob": "1822cf583f8226c947302b340a1fb38c12b2496d"
+    },
+    {
+      "path": "app/Config/Boot/testing.php",
+      "origin": "upstream-unmodified",
+      "sha256": "76e1e19dc621fb4d094dc3b0c88ca151180e4a047f552375321c42b80b82b411",
+      "upstream_blob": "40b6ca83cf3f640893c76c54c15788813d90f324"
+    },
+    {
+      "path": "app/Config/CURLRequest.php",
+      "origin": "upstream-unmodified",
+      "sha256": "3b4a2489d20ae5efc934362eb4e316b7bd5050cb6c3e1e9d00aa5b87596e3d76",
+      "upstream_blob": "bc5947fb7bb7ada69ce2d299dc20c864bfcc8eea"
+    },
+    {
+      "path": "app/Config/Cache.php",
+      "origin": "upstream-unmodified",
+      "sha256": "fa9c20d09c71096583168ad17190ab06246791b4a909a580ad3e720331c6f984",
+      "upstream_blob": "38ac5419d84ca93a657cd361d42928773324c06c"
+    },
+    {
+      "path": "app/Config/Constants.php",
+      "origin": "upstream-unmodified",
+      "sha256": "c0b06fd363e600954cb528d815171754eb26d496992c5a04dcf1d50261f1ab61",
+      "upstream_blob": "fb56bb1c5b0332f06b26e8bd870f7cbdff057a98"
+    },
+    {
+      "path": "app/Config/ContentSecurityPolicy.php",
+      "origin": "upstream-unmodified",
+      "sha256": "b319247f1aee2df85b35ff7170258e3cdb9a417f39ea589e7c963c1562e8bc58",
+      "upstream_blob": "f64a9af22b0aeac11d55a72f8c7bd7f41b40c3aa"
+    },
+    {
+      "path": "app/Config/Cookie.php",
+      "origin": "upstream-adapted",
+      "sha256": "77edefb3ccf6571fae70dc6677fab901a79c55664783a8a56c658609cca20e66",
+      "upstream_blob": "3bad184797ce466f063c5ba06d3fe59469776ddd"
+    },
+    {
+      "path": "app/Config/Cors.php",
+      "origin": "upstream-unmodified",
+      "sha256": "d2ec38e8bfeb8b75aec83a9d521d875d511722fb627c8f0899a0b0f535b4b314",
+      "upstream_blob": "2b4edf6bf60fc3ab194ad8980d477fadeffb24d5"
+    },
+    {
+      "path": "app/Config/Database.php",
+      "origin": "upstream-adapted",
+      "sha256": "4f23622c34cbc5624d59085cdd64be8dc21e4fa8e560eff0dd09f2d5e5e13597",
+      "upstream_blob": "060781ea18a354f7fdb4855529e5e34ff47c07d0"
+    },
+    {
+      "path": "app/Config/DocTypes.php",
+      "origin": "upstream-unmodified",
+      "sha256": "e9212a9fcfabab913cf0561103ab5189e622c2aabb13a9607da9e3c5bf5557a1",
+      "upstream_blob": "788d68fdc1171ab6c7b8c591ac6d8c1eca9f756d"
+    },
+    {
+      "path": "app/Config/Email.php",
+      "origin": "upstream-unmodified",
+      "sha256": "9f3353760ea40e124c6e1dd991743259ee8435c2cd2df985869e0e411bce6f5a",
+      "upstream_blob": "77c573ad3acb5fd61b98ea2bc868fca2c70e159b"
+    },
+    {
+      "path": "app/Config/Encryption.php",
+      "origin": "upstream-unmodified",
+      "sha256": "cc4b097241137702af273e67254eec2df891f4198f76498438460712a0672c89",
+      "upstream_blob": "c6b8aade60ca5a9dde005100281bd373e723ad6f"
+    },
+    {
+      "path": "app/Config/Events.php",
+      "origin": "upstream-unmodified",
+      "sha256": "f32ef0f2a80cc937d38e12c8512dbb67b90ed6ccb42e37f7ec7a5cf21ac99ec0",
+      "upstream_blob": "7dc950772c0e368a1f46b1d5bdd68be652aea17f"
+    },
+    {
+      "path": "app/Config/Exceptions.php",
+      "origin": "upstream-unmodified",
+      "sha256": "289bd8aafc3208fbd0c57f1814edfd5ee7b2cd4667760a886a026e9ab667c5e8",
+      "upstream_blob": "4e3396346b80ea9aff32ef8e74888559fd6a5c8b"
+    },
+    {
+      "path": "app/Config/Feature.php",
+      "origin": "upstream-unmodified",
+      "sha256": "65da74162a88671edc99ff29b50cef2c55fd2c3c3e3d1ad3520ab1f9064932a5",
+      "upstream_blob": "ec1435af413f1735a0ff23c3d174775556a3dcbe"
+    },
+    {
+      "path": "app/Config/Filters.php",
+      "origin": "upstream-adapted",
+      "sha256": "3ec30e7c48d9875e3336df272cb54ab5046bb54fb04ab15ff99022db176bd65e",
+      "upstream_blob": "9c83ae94e55c63f2c3e300773059ffb227211228"
+    },
+    {
+      "path": "app/Config/ForeignCharacters.php",
+      "origin": "upstream-unmodified",
+      "sha256": "5944831f09fe449aaaf670c68ec1124787a0bab65ce99b5d1703a52cab14082d",
+      "upstream_blob": "f1a95725c5c7b23c0f002683260c62d8e2abf9c3"
+    },
+    {
+      "path": "app/Config/Format.php",
+      "origin": "upstream-unmodified",
+      "sha256": "f1ae2168037cf104204f2c9792f6ce092ee5721f472059f64c2f083e2eba657a",
+      "upstream_blob": "5bf56c22fd148476dde59aab16daa000153f7279"
+    },
+    {
+      "path": "app/Config/Generators.php",
+      "origin": "upstream-unmodified",
+      "sha256": "9fd72ca6975124312457f6d26aead5c424ab2afb3cc4ab1d010f34fd02385d30",
+      "upstream_blob": "cc92c7aa432f5a8ff247fb2778b55501304cd1d9"
+    },
+    {
+      "path": "app/Config/Honeypot.php",
+      "origin": "upstream-unmodified",
+      "sha256": "dd9497285afd25f1b1c312dcc9ccaeb62a3b66e649cba6640e9662016a4b7d23",
+      "upstream_blob": "67ebcb0ee74cfa8eef727870530d01924c555c4b"
+    },
+    {
+      "path": "app/Config/Hostnames.php",
+      "origin": "upstream-unmodified",
+      "sha256": "fce2fe1487b8e85d895917c7ba68f2c73cf60aab711a409ee38797001f73d744",
+      "upstream_blob": "1b4c7224ee8b8752bfcfcdb96efb982e0cb32e6d"
+    },
+    {
+      "path": "app/Config/Images.php",
+      "origin": "upstream-unmodified",
+      "sha256": "ae3609c2d8a473844ed17439096201e9eee85cafca585feaae709e03cb780134",
+      "upstream_blob": "68e415e049e059c9c4319544d5a48bb7b3f7375a"
+    },
+    {
+      "path": "app/Config/Kint.php",
+      "origin": "upstream-unmodified",
+      "sha256": "e9515a9bef75f6731f41418ce12fadc0414da21c1d7126cd680351f416b852aa",
+      "upstream_blob": "931ad47f5fe407d1d64081160b4a457a08cddf4d"
+    },
+    {
+      "path": "app/Config/Logger.php",
+      "origin": "upstream-unmodified",
+      "sha256": "e2c77f04871c6bd25dfefc8ae31b8d67af631fb5de01fc18996733f0cada4202",
+      "upstream_blob": "799dc2c39080c961f2bbdc02887f0f7147be964a"
+    },
+    {
+      "path": "app/Config/Migrations.php",
+      "origin": "upstream-unmodified",
+      "sha256": "b622532632f574c85d7481e36a937a4faeebadef2b5e3a306e796716a7df21af",
+      "upstream_blob": "eb45e72196c43b4f782eca1cfe0c6c8a0563dbbf"
+    },
+    {
+      "path": "app/Config/Mimes.php",
+      "origin": "upstream-unmodified",
+      "sha256": "fd3c376b9cc2f7d8729d9f57683f2779ba8253160ef88e0060f5c10febd5c938",
+      "upstream_blob": "c2db7340cd7e848f67c6550e8581806ae43c1251"
+    },
+    {
+      "path": "app/Config/Modules.php",
+      "origin": "upstream-unmodified",
+      "sha256": "fc9bd15cfd213031f2efe21bacb8b5753ed271b7c555e49d97dac832ce96b473",
+      "upstream_blob": "9e03fa491260a4fc8e7cc1fbacf5ec7451d45e2e"
+    },
+    {
+      "path": "app/Config/Optimize.php",
+      "origin": "upstream-unmodified",
+      "sha256": "1e3e6d7770b0df28056b1dcee27a89920b2962840af5e438e11fe453bf1643ca",
+      "upstream_blob": "8b93eb1c9ffb195e619dfd0e3bdfd62a6fbb632c"
+    },
+    {
+      "path": "app/Config/Pager.php",
+      "origin": "upstream-unmodified",
+      "sha256": "f662dac48b25a451f2799eb4c174f0a8444e909e7e19e6260cd827ad62c488ff",
+      "upstream_blob": "e341f4d35430a638e756b516ab840f49fc38d380"
+    },
+    {
+      "path": "app/Config/Paths.php",
+      "origin": "upstream-adapted",
+      "sha256": "86038112ccad9fe17c8b76fa8d718f6d7e1ee039eab30212d65fa028e0794079",
+      "upstream_blob": "ee2d7ff3ba712d4cd821b45cad8614ac29c476cd"
+    },
+    {
+      "path": "app/Config/Publisher.php",
+      "origin": "upstream-unmodified",
+      "sha256": "7dcde81c00ce4aab878d24593a9ce06114cc789590dd6f871325612e37589a69",
+      "upstream_blob": "bf03be1db7e094c97544098456f9ae22cefcdc85"
+    },
+    {
+      "path": "app/Config/Routes.php",
+      "origin": "upstream-adapted",
+      "sha256": "a1a963da5c2c4f3fb45410cd832bc11efdc17b2edb20e2a590ad4152aecae414",
+      "upstream_blob": "4cf109ed3dd445137f413a2d7b3c588c5381c8e0"
+    },
+    {
+      "path": "app/Config/Routing.php",
+      "origin": "upstream-unmodified",
+      "sha256": "9fe49163dd93349ac15795d94553f9074e98bcae23e885dfd78f7f09771e6cb6",
+      "upstream_blob": "5aeee51d212da1ac7980e91e7567ea02168d4867"
+    },
+    {
+      "path": "app/Config/Security.php",
+      "origin": "upstream-adapted",
+      "sha256": "a116f332c8a861fb5e54314324fc999337e3fabc0321b78c5438084bbd43b466",
+      "upstream_blob": "635f8b77b9b70d4586991026a0dd146f1ec67b8d"
+    },
+    {
+      "path": "app/Config/Services.php",
+      "origin": "upstream-unmodified",
+      "sha256": "34cb6ef186f9ddb585af5273ed5512a0378bf71dc0d208e5eee7ac1323c57a08",
+      "upstream_blob": "df7c8ad086004822ce2c0da50d0c45bd8670a554"
+    },
+    {
+      "path": "app/Config/Session.php",
+      "origin": "upstream-adapted",
+      "sha256": "ff250bd609874cfa7bed356d84ff2bf14b1d5bd7ff47c74424f7bf627df32213",
+      "upstream_blob": "24912865f2712d8ca86939974055faa0ccb12304"
+    },
+    {
+      "path": "app/Config/Toolbar.php",
+      "origin": "upstream-unmodified",
+      "sha256": "0fa5fb33d1321d23ae8a020305f1ac6e585c49515374bda4a21844e2925e17b0",
+      "upstream_blob": "968653e9aaacd1078d012f6b5808ec3e1ba909d3"
+    },
+    {
+      "path": "app/Config/UserAgents.php",
+      "origin": "upstream-unmodified",
+      "sha256": "7e751ab9964807388af25ae21a3fcbad9ac24be44486ba67e5ecf716a5541974",
+      "upstream_blob": "8ddfa05e3515d8ca725862dc04f46c58b5da1791"
+    },
+    {
+      "path": "app/Config/Validation.php",
+      "origin": "upstream-unmodified",
+      "sha256": "af775d9dd7574d9fabd41f5c20ff7b772c5d3a1f512c09be864133155a132735",
+      "upstream_blob": "6342dbbe7d38c17366268c7b852ecd61bb09794b"
+    },
+    {
+      "path": "app/Config/View.php",
+      "origin": "upstream-unmodified",
+      "sha256": "8c36b15b20ca24fc4e64e9069d64f96dbabe6cd655f057817a5cae72e741903d",
+      "upstream_blob": "b52d980dc39fcf2ca8fd69d07ea1d26b9c1e337a"
+    },
+    {
+      "path": "app/Config/WorkerMode.php",
+      "origin": "upstream-unmodified",
+      "sha256": "8bac1d250777a8fda58208ba2c54bf52039e51887fe61fd82b05ae5adfb09fff",
+      "upstream_blob": "fd8b49434332ca30a5f2ebd1a18d5629bbd910b0"
+    },
+    {
+      "path": "app/Contracts/AiProvider.php",
+      "origin": "new-authored",
+      "sha256": "30d1c2d5615d106604644eec63b934750a56ca9082324477e6629e1824cce135"
+    },
+    {
+      "path": "app/Contracts/AiRequest.php",
+      "origin": "new-authored",
+      "sha256": "7cfca31c68234aac8f3728cbcbb282b6eaa1316caca7924e4a45972cb5435ed9"
+    },
+    {
+      "path": "app/Contracts/AiResult.php",
+      "origin": "new-authored",
+      "sha256": "5e4f912afaa552cbffd4e7ad7c84a38501f3dba82fbb461b4077ff2562458b66"
+    },
+    {
+      "path": "app/Contracts/DeliveryResult.php",
+      "origin": "new-authored",
+      "sha256": "547f0a3e61dae72cbe5c78bac472e2ca32a93f83e41a6f009893e371c1cd9fc9"
+    },
+    {
+      "path": "app/Contracts/ExecutionContext.php",
+      "origin": "new-authored",
+      "sha256": "c94e5ad7631556b0efbc4fa7c4780a27b3677927a0b3832cc1c68b2c14d36782"
+    },
+    {
+      "path": "app/Contracts/Extension.php",
+      "origin": "new-authored",
+      "sha256": "7ca7c611145279b1555cf65427a77cfc0b2da605cbdcf738a96dfc833e75e938"
+    },
+    {
+      "path": "app/Contracts/ExtensionRegistrar.php",
+      "origin": "new-authored",
+      "sha256": "834b00ea091b9a88f5c931014f09c575865bd0c806f8d1457720d964b43fcaff"
+    },
+    {
+      "path": "app/Contracts/KnowledgeDocument.php",
+      "origin": "new-authored",
+      "sha256": "ffb6ea11cd211f96a36f581e20ea0335798cf969fe1b768f4578a6dae06e2e9e"
+    },
+    {
+      "path": "app/Contracts/KnowledgeQuery.php",
+      "origin": "new-authored",
+      "sha256": "c3ace61919b033d4aca8027b46d80b07e20b30b0e87bb3437ed5051736cc2771"
+    },
+    {
+      "path": "app/Contracts/KnowledgeSource.php",
+      "origin": "new-authored",
+      "sha256": "a1da03fe5458828744e7ebc40d4554d7bef8f6136701bcf23594cf2843fe511e"
+    },
+    {
+      "path": "app/Contracts/MailMessage.php",
+      "origin": "new-authored",
+      "sha256": "4ab48c80c741b347f9063c00be1bb67a936c106a2c4cdae3229ca169db5844e0"
+    },
+    {
+      "path": "app/Contracts/MailTransport.php",
+      "origin": "new-authored",
+      "sha256": "77387f50eeb3c73e7cd1487cc7ddf81b603a404406f9a23830dc2f74d89251eb"
+    },
+    {
+      "path": "app/Contracts/Notification.php",
+      "origin": "new-authored",
+      "sha256": "a7cfd0cdc5d90de4f0c664f171dee5914c9f7872a992a67cc2d169b4182666d0"
+    },
+    {
+      "path": "app/Contracts/NotificationChannel.php",
+      "origin": "new-authored",
+      "sha256": "e3cd6ba9685d1a88ea8b13921a39553514479df4e544478e1bb525f00d2b57cc"
+    },
+    {
+      "path": "app/Contracts/Retriever.php",
+      "origin": "new-authored",
+      "sha256": "8d3fa2b117eb23d3e6d2549e035263d4c1297f4921ff0cc4dee15c57a12013d4"
+    },
+    {
+      "path": "app/Controllers/Admin/Auth.php",
+      "origin": "new-authored",
+      "sha256": "55faf9fb8f95e5bbd50b6805f22117654bd0c7eba9e56fca67895ed486193a2b"
+    },
+    {
+      "path": "app/Controllers/Admin/Knowledge.php",
+      "origin": "new-authored",
+      "sha256": "a381ceb8c71e1bfcaa88824656f80b514bccbb90621aa88a46f7e17d9ab8704f"
+    },
+    {
+      "path": "app/Controllers/Admin/Tickets.php",
+      "origin": "new-authored",
+      "sha256": "42fb45b0b6c0e89b115381f2d35c8d782e8875f427219307124d4f4ea4ea73fd"
+    },
+    {
+      "path": "app/Controllers/BaseController.php",
+      "origin": "upstream-adapted",
+      "sha256": "a873e83bd832a48ff85de20c5d3c2612f116fcef438155f88a9099ac1d5faec0",
+      "upstream_blob": "ab45a7710be92de1809a5e595683fca79491ddd9"
+    },
+    {
+      "path": "app/Controllers/Customer/Knowledge.php",
+      "origin": "new-authored",
+      "sha256": "3502a112da8ab631eabd3b3c333bcf604d26f37fe8081aef3cc06eecc7abdd2b"
+    },
+    {
+      "path": "app/Controllers/Customer/Tickets.php",
+      "origin": "new-authored",
+      "sha256": "1efd893a568a33e5b98d8ad1c538656ad4744248c686e1f96bd8f293638c3d2e"
+    },
+    {
+      "path": "app/Controllers/Home.php",
+      "origin": "upstream-adapted",
+      "sha256": "219c50862cf9fd484f15327a8242bbac3b2b147d267d12620715af12c18db29b",
+      "upstream_blob": "59343333099a7dcb73a11582de77f78b00e6c5c7"
+    },
+    {
+      "path": "app/Controllers/Setup.php",
+      "origin": "new-authored",
+      "sha256": "7e3b464ceaa2d3d6672b18a7e98766c275ea3eb80c27dab7e707167ee1e12d10"
+    },
+    {
+      "path": "app/Database/Migrations/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Database/Migrations/2026-09-12-000001_CreateInstallation.php",
+      "origin": "new-authored",
+      "sha256": "9915ebce5390b678c782c430df93d2c84495a0b51051f3216ff3c4be11cf7d6e"
+    },
+    {
+      "path": "app/Database/Migrations/2026-09-12-000002_CreateTickets.php",
+      "origin": "new-authored",
+      "sha256": "8590cd9741afa9792b9f7c0f736ce6e19792127bfe4de83f6d0b4d43046c3516"
+    },
+    {
+      "path": "app/Database/Migrations/2026-09-12-000003_CreateDelivery.php",
+      "origin": "new-authored",
+      "sha256": "e98b1dcff74e3e9b48c9ef0a16cd92f9aad633dba1c8f3899b4c7c1aaa5cbc7e"
+    },
+    {
+      "path": "app/Database/Migrations/2026-09-12-000004_CreateKnowledge.php",
+      "origin": "new-authored",
+      "sha256": "8222d30978ed1ebb7eedc106445ff761ae59b84f5a469daf6383e279df3e5d44"
+    },
+    {
+      "path": "app/Database/Seeds/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Filters/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Filters/InstalledFilter.php",
+      "origin": "new-authored",
+      "sha256": "ee1114e789a27669e6ad649f3f0b20f37b98dc74e73fef6435fdda5c7a97f9a8"
+    },
+    {
+      "path": "app/Filters/ResponseSecurityFilter.php",
+      "origin": "new-authored",
+      "sha256": "345e98a69a4e2c3712476e26054814a782e3b7a91ec33ec6eb2c25dde4da37dd"
+    },
+    {
+      "path": "app/Filters/StaffFilter.php",
+      "origin": "new-authored",
+      "sha256": "c74f28876bfa792fbbbe47c9d9c2a60b0f4354cef1ed4af648db78139db333d1"
+    },
+    {
+      "path": "app/Helpers/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Language/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Language/en/Validation.php",
+      "origin": "upstream-unmodified",
+      "sha256": "cc000c8c25a2dc6d4149ff97fb461b9bd9017317728eb6e72e52a62731d2ac6c",
+      "upstream_blob": "54d1e7a4a27d1a86c4df05e9a0457b83d4cffe86"
+    },
+    {
+      "path": "app/Libraries/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Models/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Services/Accounts/AccountService.php",
+      "origin": "new-authored",
+      "sha256": "efe395e6c6f7ca8b36873a29bea8bd6b55cb923aa2d0958f34c8ed7b9824596c"
+    },
+    {
+      "path": "app/Services/Accounts/RateLimiter.php",
+      "origin": "new-authored",
+      "sha256": "5f9846e40d1f4c3239bde0dd312d0e7bb8e5e8ffee28132b3476e1221937f129"
+    },
+    {
+      "path": "app/Services/Delivery/DeliveryExecutor.php",
+      "origin": "new-authored",
+      "sha256": "56382cd2d362727e7310390c6b896622dc4fe6318fc244315091c0f75daf45d2"
+    },
+    {
+      "path": "app/Services/Delivery/DeliveryRetry.php",
+      "origin": "new-authored",
+      "sha256": "819f60059c22033a4ad8c5d2ca58beb783d9937f19e7922c69a2c6247207e914"
+    },
+    {
+      "path": "app/Services/Delivery/DestinationRepository.php",
+      "origin": "new-authored",
+      "sha256": "4191ab5d96b0d3bbb881c4d606424e0e6877d484027738fe8c8f887406346a2f"
+    },
+    {
+      "path": "app/Services/Delivery/Outbox.php",
+      "origin": "new-authored",
+      "sha256": "7526730661f7d3e6f60f16ab5f2688f46575115d3eaa25efa1c995d8ad5e9657"
+    },
+    {
+      "path": "app/Services/Delivery/OutboxFanout.php",
+      "origin": "new-authored",
+      "sha256": "a51d51661500810602431e328a7af1977d16acdbc20520b39b7af6ad4cc19dda"
+    },
+    {
+      "path": "app/Services/Extensions/ChannelRegistry.php",
+      "origin": "new-authored",
+      "sha256": "74d34ca90cda1b5002f213340368c39cedadd5a7c0380f30aef3852a26bc5db3"
+    },
+    {
+      "path": "app/Services/Extensions/ExtensionContext.php",
+      "origin": "new-authored",
+      "sha256": "71a085015d98c804898fac340db9ad710af0c8fdef26dcc2329332cbdfccf98f"
+    },
+    {
+      "path": "app/Services/Extensions/ExtensionManifest.php",
+      "origin": "new-authored",
+      "sha256": "abe8ce95c6c7ea962f3d29f496c3271d70064d7b9c577947513edd1d3a86848a"
+    },
+    {
+      "path": "app/Services/Extensions/ExtensionRegistry.php",
+      "origin": "new-authored",
+      "sha256": "28a9836581c60607f8db0397241baf22726293cd6430b67c81ef29c90d17919a"
+    },
+    {
+      "path": "app/Services/Extensions/SettingsNamespace.php",
+      "origin": "new-authored",
+      "sha256": "dc55ac8dd657b6e72097538b51b4797d8b7fcce7af1662325953cf6c6d0876d2"
+    },
+    {
+      "path": "app/Services/Extensions/VersionConstraint.php",
+      "origin": "new-authored",
+      "sha256": "d781c8b88ff3a4b40610e65266e94333ff06bec1617f24202381edcac6c7ed58"
+    },
+    {
+      "path": "app/Services/Installation/InstallationStatus.php",
+      "origin": "new-authored",
+      "sha256": "9908f2951192141f7d930c925f74e98cdf201f6e7dad838101f5e44473b9b9cf"
+    },
+    {
+      "path": "app/Services/Installation/Installer.php",
+      "origin": "new-authored",
+      "sha256": "0445009d379acdbd2d5d8a45de2bda063ecbade0e060a95084aadc2e15f33fc7"
+    },
+    {
+      "path": "app/Services/Installation/ProtectionCheck.php",
+      "origin": "new-authored",
+      "sha256": "cf46ec4f55ad1e46aedf60f4621379ea66b85ee1ce87983be2695e798909db74"
+    },
+    {
+      "path": "app/Services/Installation/Runtime.php",
+      "origin": "new-authored",
+      "sha256": "f99b0998b0b9362422c5cf74bf314f28cbe5b39fa125f924e49d57f5d9697d1d"
+    },
+    {
+      "path": "app/Services/Knowledge/KnowledgeConflictException.php",
+      "origin": "new-authored",
+      "sha256": "f294c02e2e4dcad30b9efc8a322bf553e024035ed9c29b0038e986b6fbdf7075"
+    },
+    {
+      "path": "app/Services/Knowledge/KnowledgeException.php",
+      "origin": "new-authored",
+      "sha256": "a18869896c5d3bddb4a934c5b00c860def85a9499382175f668016eaa41c3c4e"
+    },
+    {
+      "path": "app/Services/Knowledge/KnowledgeNotFoundException.php",
+      "origin": "new-authored",
+      "sha256": "90476e2c13ea952430bf54f85894f0926ad886b1c6cffdeab71e52ba367accf9"
+    },
+    {
+      "path": "app/Services/Knowledge/KnowledgeService.php",
+      "origin": "new-authored",
+      "sha256": "4c6d75c4a06caaa6d9644c2924ae3789d3ef072e3b86b1ace03930dee28ce450"
+    },
+    {
+      "path": "app/Services/Tickets/TicketAccess.php",
+      "origin": "new-authored",
+      "sha256": "1a86e1d06c5edb9b9e8c17b4cdedae882bb86dbd3a6bd0573ca6a6b3db3376bc"
+    },
+    {
+      "path": "app/Services/Tickets/TicketException.php",
+      "origin": "new-authored",
+      "sha256": "190fdef77b642c759740d0eeec8fb9cfa0f91221d63821a8ceb06905b39230ab"
+    },
+    {
+      "path": "app/Services/Tickets/TicketNotFoundException.php",
+      "origin": "new-authored",
+      "sha256": "44ef6f108087a33f834225d1adaa529cf4f836d3396eac0599b4d592a2a2fb89"
+    },
+    {
+      "path": "app/Services/Tickets/TicketService.php",
+      "origin": "new-authored",
+      "sha256": "0a102d7bcca5d328dd99d830ebc0d52e1c77c28978a0333713d483cb82c590a3"
+    },
+    {
+      "path": "app/Services/Tickets/TicketValidationException.php",
+      "origin": "new-authored",
+      "sha256": "e83074dfc5b2c761378bccd61231428f9d1c308019045df03b6616994a7a2988"
+    },
+    {
+      "path": "app/ThirdParty/.gitkeep",
+      "origin": "upstream-unmodified",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "app/Views/admin/auth/login.php",
+      "origin": "new-authored",
+      "sha256": "cf565b9f98fe972648c43c793e8ced42abdef390d7d7ecf7b5149da6a97420d0"
+    },
+    {
+      "path": "app/Views/admin/auth/recovery.php",
+      "origin": "new-authored",
+      "sha256": "764e2f0d0a92a5594eeb2d4bc29968d78ac6198070a212cc99874cb0c8e0c79c"
+    },
+    {
+      "path": "app/Views/admin/knowledge/form.php",
+      "origin": "new-authored",
+      "sha256": "4dd532e8dd8ec52946d311d02e0c3b0f061e53d7392c7e6009a58a0d01e552c1"
+    },
+    {
+      "path": "app/Views/admin/knowledge/index.php",
+      "origin": "new-authored",
+      "sha256": "0b2336505a8d38fc1af1cafabd012a16a4de824818f8b914683b23278c579018"
+    },
+    {
+      "path": "app/Views/admin/tickets/index.php",
+      "origin": "new-authored",
+      "sha256": "373d23f5198efd3ddbce966135d024912de293f1fbc5ee73d6c24cc6635fde31"
+    },
+    {
+      "path": "app/Views/admin/tickets/show.php",
+      "origin": "new-authored",
+      "sha256": "3082b4152bc156ff73a31d1c9d6988763c8da5ceec53dc3ad21d05fef9446114"
+    },
+    {
+      "path": "app/Views/customer/knowledge/index.php",
+      "origin": "new-authored",
+      "sha256": "1b0725b73d3548d182e06f83b68957bccbb5e72513b3db45674849daa734fe9d"
+    },
+    {
+      "path": "app/Views/customer/knowledge/show.php",
+      "origin": "new-authored",
+      "sha256": "3892870d7cd1667db7694a20257632a10b27cf77292704962ffe4cbb4cfd6946"
+    },
+    {
+      "path": "app/Views/customer/tickets/lookup.php",
+      "origin": "new-authored",
+      "sha256": "11f45f2baae1b957c638fab61f3a4f9322380dbc994943624311d55a29f39cd7"
+    },
+    {
+      "path": "app/Views/customer/tickets/new.php",
+      "origin": "new-authored",
+      "sha256": "84022300450e5af1f35d637437534f48700fa67f769e3b09aee8d3b088a5cc6c"
+    },
+    {
+      "path": "app/Views/customer/tickets/show.php",
+      "origin": "new-authored",
+      "sha256": "1dd3b87783e213e11a15d109d7cfb36c11e636b8d09a12cc5cf3f050f82ad2ee"
+    },
+    {
+      "path": "app/Views/errors/cli/error_404.php",
+      "origin": "upstream-unmodified",
+      "sha256": "855eaeb4854e735c580c7fd28d4ed1bfc82a7ee576421d84b921d99c88b0b560",
+      "upstream_blob": "456ea3e897a1cc46f501b506ee21e6e417b5b212"
+    },
+    {
+      "path": "app/Views/errors/cli/error_exception.php",
+      "origin": "upstream-unmodified",
+      "sha256": "9200529a8f18d7f214d7f9e39750626ba4acbe420809320abf7ee9c42caae63b",
+      "upstream_blob": "624f3b5b060038c6260ea713a0da6a6582cb50bd"
+    },
+    {
+      "path": "app/Views/errors/cli/production.php",
+      "origin": "upstream-unmodified",
+      "sha256": "3083340bd656c0e6d15d681de82eeb84dd6ec40073c45831b8f7c481b89bff75",
+      "upstream_blob": "7db744ecea99622f6e63dfbb934cdfd0236e57d5"
+    },
+    {
+      "path": "app/Views/errors/html/debug.css",
+      "origin": "upstream-unmodified",
+      "sha256": "7db51a846e3783179dab74603c133de552974a34ac6f691bdb753b9acbdf0511",
+      "upstream_blob": "b8539a420221f8af663fd4a55c66cdf2d5255a24"
+    },
+    {
+      "path": "app/Views/errors/html/debug.js",
+      "origin": "upstream-unmodified",
+      "sha256": "968765d1d4913a15e7fd32bc348912e527bf54503d132db7f8b0f1ba66719dd0",
+      "upstream_blob": "99199cac872c3a882de2296d33a98ece7f3d840b"
+    },
+    {
+      "path": "app/Views/errors/html/error_400.php",
+      "origin": "upstream-unmodified",
+      "sha256": "81b7b4b440566bae2c7c89a968fc035bbd3e3b6eba70c8228bb0aa7be81edf3a",
+      "upstream_blob": "555da042be30dba44cf9e03ddef7783cdd1ffc30"
+    },
+    {
+      "path": "app/Views/errors/html/error_404.php",
+      "origin": "upstream-unmodified",
+      "sha256": "e81be912470f37059fa69996397a281d5fb4d2a775d53bb2592e8c865b0189d1",
+      "upstream_blob": "e506f08350e7d75d017ff2eb890ecd66a3702cab"
+    },
+    {
+      "path": "app/Views/errors/html/error_exception.php",
+      "origin": "upstream-unmodified",
+      "sha256": "7a892b71ecf5438c25358e18a0114987a82adb626ff5b25422a9b650c1d21a72",
+      "upstream_blob": "2c4e0091136525ce69fd48663c2ccb7436199ba1"
+    },
+    {
+      "path": "app/Views/errors/html/production.php",
+      "origin": "upstream-unmodified",
+      "sha256": "bd52647edfd8ca515a7e4e391b1abb41d99081ce14863b5ca1a55b2a5fe68197",
+      "upstream_blob": "2f59a8de1bc7b408765d36ea8f27ebd51107606b"
+    },
+    {
+      "path": "app/Views/home.php",
+      "origin": "new-authored",
+      "sha256": "c9b2231c1cd99d23e4caf7c980b13066311e083c359cc7ffb1985f151d09c82f"
+    },
+    {
+      "path": "app/Views/layout.php",
+      "origin": "new-authored",
+      "sha256": "4916a9bd6a6ee39ffd6b6670acb5f38a3f99d1dda87624c77d9048c007f7b1aa"
+    },
+    {
+      "path": "app/Views/setup/complete.php",
+      "origin": "new-authored",
+      "sha256": "bcb25e7e88b12674dcd41c67491d9057bd1e3a7a72f30036176919fe48baa223"
+    },
+    {
+      "path": "app/Views/setup/index.php",
+      "origin": "new-authored",
+      "sha256": "43f0ad22d38ed61801ae355ddee530565efe6d45ab92878c8d80da478238889e"
+    },
+    {
+      "path": "app/Views/setup/repair.php",
+      "origin": "new-authored",
+      "sha256": "921976dd44d41cef7efe4de0b7de8c75443a1c4287526fc4316e882586ed5a88"
+    },
+    {
+      "path": "app/Views/welcome_message.php",
+      "origin": "upstream-unmodified",
+      "sha256": "f59f3aba960dbaf76be4f15fee64d089fcf0ad1cdd4217ad7cc4f4658bbbbcc1",
+      "upstream_blob": "c18eca3c9ed3fffb7a7bf8f5e02b7d333a5feae0"
+    },
+    {
+      "path": "app/index.html",
+      "origin": "upstream-unmodified",
+      "sha256": "01644da213f8458177f02e6d5fec529e3c8fd1bac86b0c1771d43b961079ea32",
+      "upstream_blob": "69df4e1dff6881a3d0f51b9e0d5c04064d06e255"
+    },
+    {
+      "path": "bootstrap/preflight.php",
+      "origin": "new-authored",
+      "sha256": "c707bc59b61a1b70e9b51dceb967b71472705b3488c0e903f721e0510ec6ac14"
+    },
+    {
+      "path": "bootstrap/runtime-config-schema.php",
+      "origin": "new-authored",
+      "sha256": "958f98624b9a3174615229efb4e9914353c9f410238c49dab6b317c9c932e0ed"
+    },
+    {
+      "path": "builds",
+      "origin": "upstream-unmodified",
+      "sha256": "d4b589cb0742c01a920240a1f4c5e8f7a8a50b1fe78b873e407e68471ba098cd",
+      "upstream_blob": "c68c0894e93bc83dea3edb0dd2f79fe08c56815e"
+    },
+    {
+      "path": "composer.json",
+      "origin": "upstream-adapted",
+      "sha256": "949aca66b3584ed7058a19fdf7f8e1c98f574de91235e729317abe20371944d3",
+      "upstream_blob": "d47149e0287f0120df0106dfd7a4d63b8a0ab163"
+    },
+    {
+      "path": "composer.lock",
+      "origin": "new-authored",
+      "sha256": "38cdde35d3b628ee9bcc0a7417b6b232fa3816630e337c9383d81f887b368321"
+    },
+    {
+      "path": "docs/development.md",
+      "origin": "new-authored",
+      "sha256": "042aece807f86532294a10a42a335506a46b1a3eff32c3a9988bc6a9da0022f9"
+    },
+    {
+      "path": "docs/installation.md",
+      "origin": "new-authored",
+      "sha256": "5bd6f96dcd168b66564b96496c1a0463a66a6ccf25eb826a3e317fd9b5b882eb"
+    },
+    {
+      "path": "docs/security.md",
+      "origin": "new-authored",
+      "sha256": "cf5ef9e83da30057d57b649eb66189a21b3a974cc3de10a4256bc24a627ff87a"
+    },
+    {
+      "path": "env",
+      "origin": "upstream-unmodified",
+      "sha256": "9d29edfbf996099ed0f73454f16b1ac5e1ba85470bd5a0c5be71712ae087f753",
+      "upstream_blob": "f359ec20bff2dd5adfcdbf5a40d1341f7e57a1c5"
+    },
+    {
+      "path": "examples/example-notifier/README.md",
+      "origin": "new-authored",
+      "sha256": "f33b593c58a82b2628a87190e3474195ff8985d877274b72fa345bda318fc828"
+    },
+    {
+      "path": "examples/example-notifier/manifest.json",
+      "origin": "new-authored",
+      "sha256": "6d179a77b6b164db656946cf67739027e414b73d5eaf005b38a81d0a51f4c614"
+    },
+    {
+      "path": "examples/example-notifier/src/ExampleNotifierExtension.php",
+      "origin": "new-authored",
+      "sha256": "597c636a286015dcc879ca7977a2d7004b9e169284612e13a62a22eaacb6cdb9"
+    },
+    {
+      "path": "modules/supportk/mock-notifier/manifest.json",
+      "origin": "new-authored",
+      "sha256": "433c66ce8af2ca9ddd957b709a0545aa363442661a1ed458f6dfe2819db63835"
+    },
+    {
+      "path": "modules/supportk/mock-notifier/src/MockNotifierExtension.php",
+      "origin": "new-authored",
+      "sha256": "37a53e2e78d18d3479ac4ede5da08042880e39135f2ea260a3a82d8610473288"
+    },
+    {
+      "path": "packaging/audit-source.php",
+      "origin": "new-authored",
+      "sha256": "0d2d239c1d350eaf75b5ccbdd344962847111886e63a390673b25124c9403ea6"
+    },
+    {
+      "path": "packaging/build.php",
+      "origin": "new-authored",
+      "sha256": "b8faec6cf819d6b5c6e5360caac6b2dd003bb1cc4a3a065a8b6b6a83bbfc3346"
+    },
+    {
+      "path": "packaging/ci.github.yml",
+      "origin": "new-authored",
+      "sha256": "15d96a091eac1fe11d61e758aa12c992daefd9bd33da542dfdb7947905c93af2"
+    },
+    {
+      "path": "packaging/dev/Dockerfile",
+      "origin": "new-authored",
+      "sha256": "3a03082bf229f5734acefd709b9e26a58022edd7d5bc25136891608956f1bdba"
+    },
+    {
+      "path": "packaging/entry.php",
+      "origin": "new-authored",
+      "sha256": "68d0204a81f1735ab1450633570b222bfe9875f887204b0c0bce409e2fc51398"
+    },
+    {
+      "path": "packaging/public.htaccess",
+      "origin": "new-authored",
+      "sha256": "13ef447baaf72d3ae0ade84eb2df18decd47213e15d763425cffed32d2795b72"
+    },
+    {
+      "path": "packaging/verify.php",
+      "origin": "new-authored",
+      "sha256": "9098e55bb4a7c51b87910f1f1e77aedf045babd7c0885f736a0d04b6ad1116a6"
+    },
+    {
+      "path": "phpunit.dist.xml",
+      "origin": "upstream-unmodified",
+      "sha256": "51cef7a70342d84e8b5fb60dce6795eee63d22f1c328059874bc046bcf57c91d",
+      "upstream_blob": "d9d2c6ade852af71d134114e102db2deee1996b6"
+    },
+    {
+      "path": "preload.php",
+      "origin": "upstream-unmodified",
+      "sha256": "6d0dd87d4dabf7bb32f98980a95d2b068ef85961b0e6fcba109b441a17ef3050",
+      "upstream_blob": "288b30b4ef48f7c233327028d001003aa95f5c97"
+    },
+    {
+      "path": "public/.htaccess",
+      "origin": "upstream-unmodified",
+      "sha256": "328c42a9958cc7a952686723af19e685977080d1129aa229c4e295744a10c493",
+      "upstream_blob": "abac3cb6b949e5fb4b65ba32a270d80866ee76b8"
+    },
+    {
+      "path": "public/assets/app.css",
+      "origin": "new-authored",
+      "sha256": "9d3b40c760ff3be4522bbc0ae3dbaacfeeb5dc71d0911ae9f87cd16966cc61b3"
+    },
+    {
+      "path": "public/favicon.ico",
+      "origin": "upstream-unmodified",
+      "sha256": "1dfc58ffbcb07c761f79eb6b46f50b3789bd21e41a0b4cb1aca82b1dd8020fcc",
+      "upstream_blob": "7ecfce214cbdbedc15d8348babeff5cd7e720488"
+    },
+    {
+      "path": "public/index.php",
+      "origin": "upstream-adapted",
+      "sha256": "c05ca26741e76b377597fad52b39ae1cc1c6fe00d4b09c22aa72d33a46757e15",
+      "upstream_blob": "8e834f2c863db5bff59bd357ba918d93c4c7a679"
+    },
+    {
+      "path": "public/robots.txt",
+      "origin": "upstream-adapted",
+      "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+      "upstream_blob": "9e60f970fbd025612caecdc947f7a67ceb24d511"
+    },
+    {
+      "path": "spark",
+      "origin": "upstream-unmodified",
+      "sha256": "10b3b8cc982064a0e32e373f589b0aca25740a25588f122e8f54fa2e1ecb6073",
+      "upstream_blob": "61bc572b9759c9685dbaeb2a17973e076a83caca"
+    },
+    {
+      "path": "tests/.htaccess",
+      "origin": "upstream-unmodified",
+      "sha256": "66d7bf6151b5085af019d2473254f2827360b94b3c37a73d7837e89d435acdb6",
+      "upstream_blob": "3462048add78cbd6613527fb8aee3cd1d6cc6569"
+    },
+    {
+      "path": "tests/README.md",
+      "origin": "upstream-unmodified",
+      "sha256": "3fff6ae6a34904dec5b82398de2b7a19d49d309ce85afe5a7d58160d46404025",
+      "upstream_blob": "d5b12eea54f75afb03761ef80fb742c454562025"
+    },
+    {
+      "path": "tests/_support/Database/Migrations/2020-02-22-222222_example_migration.php",
+      "origin": "upstream-unmodified",
+      "sha256": "fdd98eaa1508a77695c5936d46bb24b821edcf8b7a4bfe1c5a5d6cfbacd1a400",
+      "upstream_blob": "a73356d3479ad05ac7130b5233f71e6dd8a6c4d8"
+    },
+    {
+      "path": "tests/_support/Database/Seeds/ExampleSeeder.php",
+      "origin": "upstream-unmodified",
+      "sha256": "377f9f928f41cd9cdf0b704a048c26057cacfb78f9ed4acfe11784a0cb3e8061",
+      "upstream_blob": "619fc27a72925234c37ba306f103a6025b249bda"
+    },
+    {
+      "path": "tests/_support/Libraries/ConfigReader.php",
+      "origin": "upstream-unmodified",
+      "sha256": "9c0740e5bff72f893b490fb8f5ed4a34cd659d562a5756911b496c4aeae23dcf",
+      "upstream_blob": "0bb4a8fcf598181c957314685545446b63980674"
+    },
+    {
+      "path": "tests/_support/Models/ExampleModel.php",
+      "origin": "upstream-unmodified",
+      "sha256": "17131b4c527b49ea21f6734aba8b5c9716b8c5fcd6df497b50a29ff3ceb6122b",
+      "upstream_blob": "f0687e9b198581eaada4141697275ce5ff497fea"
+    },
+    {
+      "path": "tests/database/ExampleDatabaseTest.php",
+      "origin": "upstream-unmodified",
+      "sha256": "8cd82a98afa53372d7d9030c3dfbd4f6ca5812d3a39f4a52d2d73f87e03112dd",
+      "upstream_blob": "d6c3bb9e51872fc1df60f5cf5f626e8c124ce06b"
+    },
+    {
+      "path": "tests/index.html",
+      "origin": "upstream-unmodified",
+      "sha256": "0ee6dff170c38f66cc1e9ef00cfb927bba75b30379af3281c026647c068a4709",
+      "upstream_blob": "b702fbc3967b4f49eddb394723822973f2f80fb4"
+    },
+    {
+      "path": "tests/integration/AccountServiceTest.php",
+      "origin": "new-authored",
+      "sha256": "b40d6b0474f2b58bfe7922ed9d4618d1b84a74cc54c30661cd11ffaad1c526c2"
+    },
+    {
+      "path": "tests/integration/DeliveryExecutorTest.php",
+      "origin": "new-authored",
+      "sha256": "058cc7aa3466b11bab55131a3685b9be57853f325429ccfd75635c486a966816"
+    },
+    {
+      "path": "tests/integration/InstallationStatusTest.php",
+      "origin": "new-authored",
+      "sha256": "dcfa4d5344d877e94f61dfa8fac8656616cb5eda42bb7c5756eb239ac89866a4"
+    },
+    {
+      "path": "tests/integration/KnowledgeServiceTest.php",
+      "origin": "new-authored",
+      "sha256": "2dd5f7ccabfb9711fc8d645e669093ef813709346a601fa2cdc231e95136c648"
+    },
+    {
+      "path": "tests/integration/OutboxTest.php",
+      "origin": "new-authored",
+      "sha256": "7d9d14fdf47452fbf0facc7777760176e4ffd79a84740781b5eaaa8d6ecdc696"
+    },
+    {
+      "path": "tests/integration/TicketServiceTest.php",
+      "origin": "new-authored",
+      "sha256": "a15a8eabc3eedb50db5f8c6992571ec5570d1ce6e971497655edbe62723a6760"
+    },
+    {
+      "path": "tests/session/ExampleSessionTest.php",
+      "origin": "upstream-unmodified",
+      "sha256": "08a6b6cfe08b51eedf891f4193ff7dbd54834b4b46905afb9526949070a1e9eb",
+      "upstream_blob": "33242a47711290652e7bd73363c3533e15fdbed6"
+    },
+    {
+      "path": "tests/unit/ContractTest.php",
+      "origin": "new-authored",
+      "sha256": "cdd30aba474645d1956794952099e8c7fd2cc97d14e1c53c0a3fff253064ebf0"
+    },
+    {
+      "path": "tests/unit/ExtensionRegistryTest.php",
+      "origin": "new-authored",
+      "sha256": "ef989bc9db35009d582b57c35ae5f68c3f873771885987601c7f638fce72b6b9"
+    },
+    {
+      "path": "tests/unit/HealthTest.php",
+      "origin": "upstream-unmodified",
+      "sha256": "84736aab7348d639aa8ba0b6573471fc409787c3a3834eabfe476647f1751d9c",
+      "upstream_blob": "1df24df823a7c8922993de4a3f1adccdfa839e46"
+    },
+    {
+      "path": "tests/unit/PackageVerifyTest.php",
+      "origin": "new-authored",
+      "sha256": "1abd5988d89f37f565573654643a08c609f2b716f5566a93c6cbdb4e5c3ec087"
+    },
+    {
+      "path": "tests/unit/RuntimeConfigSchemaTest.php",
+      "origin": "new-authored",
+      "sha256": "6f9d60ec9552a5f3a3b05b2e2265b0b6adff104302057407e38691f699f383d0"
+    },
+    {
+      "path": "tests/unit/SourceAuditTest.php",
+      "origin": "new-authored",
+      "sha256": "229f8da743a36bc0f8044b05c4c97577d231d4c9669815da6ed1e8afb0a79c7b"
+    },
+    {
+      "path": "tests/unit/TicketAccessTest.php",
+      "origin": "new-authored",
+      "sha256": "457c81b7eba2eb2b69152b4b3e5ff3bc74b10c09459db48053617df7cf2d86b5"
+    }
+  ]
+}
