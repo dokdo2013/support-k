@@ -33,7 +33,7 @@ composer install
 vendor/bin/phpunit --no-coverage
 ```
 
-The proposed GitHub Actions workflow is stored in `packaging/ci.github.yml`. It defines SQLite tests and a MariaDB/MySQL matrix. It is not active: the current GitHub authentication cannot create workflows. A maintainer with workflow permission can place the reviewed file at `.github/workflows/ci.yml`. Composer and the CLI are development and build tools; a host operator installs a completed release ZIP and does not need Composer.
+The GitHub Actions workflow at `.github/workflows/ci.yml` runs SQLite tests, a MariaDB/MySQL matrix, source checks, and install ZIP verification for pull requests and changes to `main`. Composer and the CLI are development and build tools; a host operator installs a completed release ZIP and does not need Composer.
 
 To review the source tree without Git metadata:
 

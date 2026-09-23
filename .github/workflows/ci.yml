@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -125,7 +125,7 @@ jobs:
         run: vendor/bin/phpunit --no-coverage
 
   package:
-    name: Build private install artifact
+    name: Build install artifact
     runs-on: ubuntu-latest
     needs: [sqlite, database]
     steps:
@@ -159,7 +159,7 @@ jobs:
           php packaging/verify.php dist/support-k-0.1.0-alpha.1.zip
           (cd dist && sha256sum -c support-k-0.1.0-alpha.1.zip.sha256)
 
-      - name: Upload private CI artifact
+      - name: Upload CI artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: support-k-install-zip
