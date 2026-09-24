@@ -1,42 +1,44 @@
+한국어 | [English](README.en.md)
+
 # Support K
 
-Support K is an MIT-licensed, self-hosted customer support application for PHP hosting. The first alpha provides a small support inbox, knowledge content, and the installation and storage foundations for replaceable delivery and extension connections.
+Support K는 PHP 웹호스팅에 직접 설치하는 MIT 라이선스 고객센터 애플리케이션입니다. 첫 알파에는 문의함, 지식 문서, 설치·저장소 기반과 알림·확장 기능을 교체할 수 있는 계약이 포함됩니다.
 
-## Alpha status
+## 알파 상태
 
-`0.1.0-alpha.1` has a bounded end-to-end proof. The current proof used a source checkout on Apache with PHP 8.4.25 and MariaDB 10.11:
+`0.1.0-alpha.1`의 핵심 흐름은 제한된 환경에서 검증했습니다. Apache, PHP 8.4.25, MariaDB 10.11의 소스 체크아웃에서 다음을 확인했습니다.
 
-- the browser installer completed its upload proof, database setup, Owner creation, and recovery-code display;
-- a customer submitted a ticket without email delivery, staff replied, staff added a private note, and the customer sent a follow-up;
-- public, draft, and internal knowledge records passed create, update, delete, search, and stale-content HTTP checks;
-- the original release ZIP is about 1.6 MB, installs its three runtime packages separately with `composer install --no-dev`, and passes the package manifest and SHA-256 checks;
-- the ZIP passed local Apache HTTP installation checks both at the document root and below `/support/`, including eight ticket cases, private-area blocking, and versioned CSS loading.
+- 브라우저 설치 마법사의 업로드 확인, DB 설정, 첫 Owner 계정 생성, 복구 코드 표시
+- 이메일 발송 없이 고객 문의 등록, 운영자 답변과 비공개 메모, 고객 추가 답변
+- 공개·초안·내부 지식 문서의 생성, 수정, 삭제, 검색 및 오래된 콘텐츠 처리
+- 약 1.6MB의 기존 설치 ZIP, `composer install --no-dev`로 별도 설치한 런타임 패키지 3개, 패키지 매니페스트와 SHA-256 검사
+- ZIP을 웹 루트와 `/support/` 하위 경로에 둔 로컬 Apache HTTP 설치 검사: 문의 사례 8개, 비공개 영역 차단, 버전별 CSS 로딩
 
-These HTTP checks used PHP 8.4.25 and MariaDB 10.11. A second ZIP with a separate `public/` document root builds and passes package verification; a local PHP 8.2 smoke test reached `/setup`, denied a private file, and rejected a wrong document root. It has not yet had a real-host installation check. Public HTTPS deployment remains unverified. The proof does not establish support for every PHP host, web server, database version, or hosting plan.
+분리형 ZIP도 빌드·패키지 검증을 통과했습니다. PHP 8.2 로컬 HTTP 검사에서 `/setup` 접속, 비공개 파일 차단, 잘못된 문서 루트 거부를 확인했습니다. 실제 웹호스팅 설치와 공개 HTTPS 배포는 아직 검증하지 않았습니다. 모든 PHP 호스팅, 웹 서버, DB 버전, 요금제에 대한 지원을 뜻하지 않습니다.
 
-This alpha is suitable for development evaluation. Do not put production customer data into it until the target host has been tested and a backup and recovery procedure has been rehearsed.
+이 알파는 개발·평가용입니다. 대상 호스팅에서 설치를 검증하고 백업·복구 절차를 연습하기 전에는 실제 고객 데이터를 넣지 마세요.
 
-## What is implemented
+## 구현된 기능
 
-The foundation currently includes the browser installation flow, the first Owner account and one-time recovery code, customer tickets and staff replies and private notes, knowledge content with public, draft, and internal visibility, internal domain events and delivery jobs, extension contracts, and the example notifier extension. The release builder, source audit, and ZIP verifier are part of the development and release checks.
+브라우저 설치, 첫 Owner 계정과 일회용 복구 코드, 고객 문의·운영자 답변·비공개 메모, 공개·초안·내부 지식 문서, 내부 도메인 이벤트와 전달 작업, 확장 계약, 예제 알림 확장이 구현되어 있습니다. 릴리스 빌더, 소스 감사, ZIP 검증기도 포함됩니다.
 
-The following remain outside this alpha: attachments, custom forms, an Agent account management UI, AI provider connections, real email notifications, extension management UI, in-app updating, and a tested commercial shared-host deployment. The existing delivery and extension contracts do not mean that a provider or hosting integration is ready for use.
+첨부파일, 사용자 정의 양식, Agent 계정 관리 화면, AI 제공자 연결, 실제 이메일 알림, 확장 관리 화면, 앱 내 업데이트, 상용 공유 호스팅 설치 검증은 아직 지원 기능이 아닙니다. 전달·확장 계약이 있다고 해서 외부 제공자 연동이 준비된 것은 아닙니다.
 
-## Requirements
+## 요구 사항
 
-For a host installation use PHP 8.2 or newer with `intl`, `mbstring`, `fileinfo`, `openssl`, `curl`, and `mysqli`. MariaDB 10.11 is the database combination covered by the current installation proof. Other MySQL and MariaDB versions need their own check.
+설치 호스팅에는 PHP 8.2 이상과 `intl`, `mbstring`, `fileinfo`, `openssl`, `curl`, `mysqli` 확장이 필요합니다. 현재 설치 검증에 사용한 DB는 MariaDB 10.11입니다. 다른 MySQL/MariaDB 버전은 별도 확인이 필요합니다.
 
-Use HTTPS for an installation and for normal operation. The application rejects a public HTTP installation. `SUPPORT_K_ALLOW_HTTP=1` is a local development exception for an HTTP test server; it is not an operating recommendation and does not make a public deployment safe. The `zip` PHP extension is required on the machine that builds a release ZIP. A host that installs a completed ZIP does not need Composer or the build-time `zip` extension.
+설치와 운영에는 HTTPS가 필요합니다. 공개 HTTP 설치는 거부됩니다. `SUPPORT_K_ALLOW_HTTP=1`은 로컬 개발 서버에서만 사용하는 예외입니다. `zip` PHP 확장은 릴리스 ZIP을 만드는 환경에만 필요하며, 완성된 ZIP을 설치하는 호스팅에는 Composer와 빌드용 `zip` 확장이 필요하지 않습니다.
 
-## Install a release ZIP
+## 설치 ZIP 사용
 
-Start with [docs/installation.md](docs/installation.md). Choose the split-root ZIP when the host lets you set the document root to `public/`; choose the original fixed-root ZIP for Apache hosting that applies the included `.htaccess`. Upload the ZIP by FTP or the host file manager, create an empty MariaDB database and user, and open `/setup` over HTTPS. The installer asks for a one-time upload proof, database details, the site URL, and the first Owner credentials. It displays a one-time recovery code after a successful install.
+[설치 안내](docs/installation.md)에서 시작하세요. 호스팅의 문서 루트를 `public/`으로 지정할 수 있다면 분리형 ZIP을, Apache에서 포함된 `.htaccess`를 적용하는 고정 웹 루트라면 기존 ZIP을 선택합니다. FTP 또는 파일 관리자로 업로드하고 빈 MariaDB DB와 사용자를 만든 뒤 HTTPS의 `/setup`을 엽니다. 설치 마법사는 일회용 업로드 확인, DB 정보, 사이트 URL, 첫 Owner 계정을 요청하고 설치 후 일회용 복구 코드를 보여 줍니다.
 
-The split-root ZIP keeps `_supportk/` beside `public/`, outside the web document root. The original ZIP uses its extracted root as the document root and relies on Apache rules to block `_supportk/`. Keep every packaged file and disable directory listings. Both layouts need URL rewriting to `index.php`.
+분리형 ZIP은 `_supportk/`를 `public/` 옆의 웹 루트 바깥에 둡니다. 기존 ZIP은 압축 해제 위치를 문서 루트로 사용하고 Apache 규칙으로 `_supportk/` 접근을 차단합니다. 모든 파일을 유지하고 디렉터리 목록을 끄세요. 두 방식 모두 `index.php`로의 URL 재작성 설정이 필요합니다.
 
-## Development
+## 개발
 
-The source document root is `public/`, while the repository root contains the application and development tools. The development Docker image sets `SUPPORT_K_DOCUMENT_ROOT=/var/www/html/public`. The fixed-root ZIP serves from its extracted root; the split-root ZIP serves from its `public/` directory.
+소스의 웹 문서 루트는 `public/`이며, 저장소 루트에는 애플리케이션과 개발 도구가 있습니다. 개발 Docker 이미지는 `SUPPORT_K_DOCUMENT_ROOT=/var/www/html/public`을 사용합니다. 기존 ZIP의 문서 루트는 압축 해제 위치이고, 분리형 ZIP의 문서 루트는 `public/`입니다.
 
 ```sh
 docker build -f packaging/dev/Dockerfile -t support-k-dev .
@@ -44,27 +46,27 @@ docker run --rm -v support-k-writable:/var/www/html/writable --entrypoint sh sup
 docker run --rm -p 127.0.0.1:8080:8080 -e SUPPORT_K_HTTP_PORT=8080 -e SUPPORT_K_ALLOW_HTTP=1 -v "$PWD":/var/www/html -v support-k-writable:/var/www/html/writable support-k-dev
 ```
 
-The named `writable` volume keeps local runtime files out of the source tree. Prepare it with write permission for the container's `www-data` user as shown. A development database is still required; configure a local MariaDB/MySQL instance before opening the installer.
+이름 있는 `writable` 볼륨은 런타임 파일을 소스 트리와 분리합니다. 위 명령처럼 컨테이너의 `www-data` 사용자에게 쓰기 권한을 부여하세요. 설치 마법사를 열기 전 로컬 MariaDB/MySQL DB도 준비해야 합니다.
 
-For a local source checkout, install development dependencies and run the tests:
+로컬 소스 체크아웃에서 개발 의존성을 설치하고 테스트를 실행합니다.
 
 ```sh
 composer install
 vendor/bin/phpunit --no-coverage
 ```
 
-Composer and the CLI are development tools. They are not required on a host that receives a completed release ZIP.
+Composer와 CLI는 개발 도구입니다. 완성된 설치 ZIP을 받는 호스팅에는 필요하지 않습니다.
 
-The source audit can inspect a checkout or unpacked directory without Git metadata:
+Git 메타데이터가 없는 디렉터리도 소스 감사로 검사할 수 있습니다.
 
 ```sh
 php packaging/audit-source.php .
 ```
 
-It excludes `vendor/`, `writable/`, `.git/`, `dist/`, and `build/`, and reports high-confidence secrets, private keys, deployment credentials, machine paths, sensitive files, and populated runtime settings. Placeholder values used in documentation and synthetic tests are allowed. A clean audit is one release check, not a replacement for review.
+감사는 `vendor/`, `writable/`, `.git/`, `dist/`, `build/`를 제외하고, 확실도가 높은 비밀값·개인키·배포 자격 증명·로컬 경로·민감 파일·실제 값이 채워진 런타임 설정을 찾습니다. 문서와 합성 테스트의 예시 값은 허용합니다. 감사 통과만으로 릴리스 검토를 대신할 수 없습니다.
 
-## License and third-party software
+## 라이선스와 서드파티 소프트웨어
 
-Support K and the original framework attribution are distributed under the MIT License in [LICENSE](LICENSE). Runtime and development dependencies, versions, licenses, and upstream sources are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Support K와 원본 프레임워크의 저작권 표기는 [MIT 라이선스 원문](LICENSE)에 따릅니다. [한국어 참고 번역](LICENSE.ko.md)도 제공하지만 법적 기준은 원문입니다. 런타임·개발 의존성의 버전, 라이선스, 출처는 [서드파티 고지](THIRD_PARTY_NOTICES.md)에 정리했습니다.
 
-Security reports should describe the affected version and a reproducible report without including customer data or credentials. See [docs/security.md](docs/security.md).
+보안 문제를 제보할 때는 고객 데이터나 자격 증명을 포함하지 말고 영향받는 버전과 재현 방법을 적어 주세요. [보안 안내](docs/security.md)를 참고하세요.

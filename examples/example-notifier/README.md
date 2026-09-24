@@ -1,9 +1,7 @@
-# Example notifier
+한국어 | [English](README.en.md)
 
-This synthetic extension shows the smallest notification-channel integration.
-Its manifest declares compatibility and permissions, while the entrypoint
-registers a channel through the public `ExtensionRegistrar` contract. The
-example performs no network or filesystem I/O.
+# 예제 알림 확장
 
-An extension is trusted PHP code running with the application process rights.
-Manifest permissions help review and gate core APIs; they are not a sandbox.
+이 합성 예제는 가장 작은 알림 채널 연동을 보여 줍니다. 매니페스트는 호환성과 권한을 선언하고, 진입점은 공개 `ExtensionRegistrar` 계약을 통해 채널을 등록합니다. 예제는 네트워크나 파일 시스템 입출력을 하지 않습니다.
+
+확장은 애플리케이션 프로세스 권한으로 실행되는 신뢰된 PHP 코드입니다. 매니페스트 권한은 핵심 API를 검토하고 제한하는 데 도움을 주지만, 격리 실행 환경은 아닙니다.

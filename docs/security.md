@@ -1,13 +1,15 @@
-# Security
+한국어 | [English](security.en.md)
 
-Do not commit secrets or personal data. This includes API keys, webhook URLs with credentials, SMTP passwords, private keys, database passwords, customer conversations, attachments, exported tables, and machine-specific paths.
+# 보안 안내
 
-Use the source audit during development and before packaging:
+비밀값이나 개인정보를 커밋하지 마세요. API 키, 자격 증명이 포함된 웹훅 URL, SMTP 비밀번호, 개인키, DB 비밀번호, 고객 대화, 첨부파일, 테이블 내보내기, 기기별 경로가 포함됩니다.
+
+개발 중과 패키징 전에 소스 감사를 실행하세요.
 
 ```sh
 php packaging/audit-source.php .
 ```
 
-The audit catches high-confidence secret formats, populated sensitive settings, private key material, and likely real local or deployment paths. It accepts clearly marked examples and placeholders. A clean result does not prove that a release is safe: inspect Git history, generated archives, dependencies, logs, images, and third-party assets separately.
+감사는 확실도가 높은 비밀값 형식, 실제 값이 채워진 민감 설정, 개인키 내용, 실제 로컬·배포 경로로 보이는 값을 찾습니다. 명시적인 예시 값과 플레이스홀더는 허용합니다. 검사 결과가 깨끗하다고 해서 릴리스가 안전하다고 단정할 수는 없습니다. Git 이력, 생성된 ZIP, 의존성, 로그, 이미지, 서드파티 자산을 별도로 확인하세요.
 
-For a vulnerability report, provide the affected version, impact, reproduction steps, and a suggested contact channel without attaching real credentials or customer records. Keep the report itself suitable for disclosure to the maintainers.
+취약점을 제보할 때는 실제 자격 증명이나 고객 기록을 첨부하지 말고 영향받는 버전, 영향, 재현 절차, 연락 가능한 수단을 알려 주세요. 제보 내용도 유지보수 담당자에게 안전하게 공유할 수 있는 형태로 작성하세요.

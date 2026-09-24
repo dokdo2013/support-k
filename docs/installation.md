@@ -1,76 +1,78 @@
-# Install Support K 0.1.0-alpha.1
+한국어 | [English](installation.en.md)
 
-This guide covers two release ZIP layouts. Local Apache HTTP checks with PHP 8.4.25 and MariaDB 10.11 passed for the original ZIP at the document root and below `/support/`, including eight ticket cases, private-area blocking, and versioned CSS loading. A local PHP 8.2 smoke test of the split-root ZIP reached `/setup`, returned 404 for `/_supportk/active.json`, and rejected a wrong document root with 503. The split-root ZIP has not yet been tested on a real host. Public HTTPS deployment remains unverified.
+# Support K 0.1.0-alpha.1 설치
 
-## Before you upload
+설치 ZIP은 두 가지 구조로 제공됩니다. 기존 ZIP은 Apache, PHP 8.4.25, MariaDB 10.11의 로컬 HTTP 환경에서 웹 루트와 `/support/` 하위 경로 설치를 확인했습니다. 문의 사례 8개, 비공개 영역 차단, 버전별 CSS 로딩도 확인했습니다. 분리형 ZIP은 PHP 8.2 로컬 검사에서 `/setup` 접속, `/_supportk/active.json` 요청의 404 응답, 잘못된 문서 루트의 503 거부를 확인했습니다. 분리형 ZIP의 실제 호스팅 설치와 공개 HTTPS 배포는 아직 검증하지 않았습니다.
 
-Prepare:
+## 업로드 전 준비
 
-- PHP 8.2 or newer with `intl`, `mbstring`, `fileinfo`, `openssl`, `curl`, and `mysqli` enabled;
-- an empty MariaDB database and a database user with permission to create and alter tables in that database;
-- an HTTPS address for the customer center; and
-- FTP or file-manager access to the host files, plus the ability to set the document root or use Apache `.htaccess` rules.
+다음을 준비하세요.
 
-The `zip` extension and Composer are build-machine requirements. They are not required on a host that receives this ZIP. Do not upload a source checkout and do not run Composer on a shared host as part of this procedure.
+- PHP 8.2 이상과 활성화된 `intl`, `mbstring`, `fileinfo`, `openssl`, `curl`, `mysqli` 확장
+- 비어 있는 MariaDB DB와 그 DB에 테이블 생성·변경 권한이 있는 사용자
+- 고객센터에 사용할 HTTPS 주소
+- FTP 또는 호스팅 파일 관리자 접근 권한, 그리고 문서 루트를 지정하거나 Apache `.htaccess` 규칙을 사용할 수 있는 설정
 
-HTTPS is required for a public install. `SUPPORT_K_ALLOW_HTTP=1` is reserved for a local development server and is not a production setting.
+`zip` 확장과 Composer는 ZIP을 만드는 컴퓨터에만 필요합니다. 완성된 ZIP을 받는 호스팅에는 필요하지 않습니다. 이 절차에서 소스 체크아웃을 업로드하거나 공유 호스팅에서 Composer를 실행하지 마세요.
 
-## Choose a package layout
+공개 설치에는 HTTPS가 필수입니다. `SUPPORT_K_ALLOW_HTTP=1`은 로컬 개발 서버 전용이며 운영 설정이 아닙니다.
 
-| ZIP | Host capability | Web document root | Private files |
+## 설치 ZIP 선택
+
+| ZIP | 호스팅 조건 | 웹 문서 루트 | 비공개 파일 |
 | --- | --- | --- | --- |
-| `support-k-0.1.0-alpha.1-split-root.zip` | Can set the site's document root to the extracted `public/` directory | `public/` | Sibling `_supportk/`, outside the web root |
-| `support-k-0.1.0-alpha.1.zip` | Fixed web root on Apache with working `.htaccess` and rewrite rules | Extracted ZIP root | `_supportk/` inside the web root, blocked by Apache rules |
+| `support-k-0.1.0-alpha.1-split-root.zip` | 문서 루트를 압축 해제한 `public/`으로 지정 가능 | `public/` | 웹 루트 밖에 있는 형제 디렉터리 `_supportk/` |
+| `support-k-0.1.0-alpha.1.zip` | Apache의 고정 웹 루트에서 `.htaccess`와 재작성 규칙 적용 가능 | ZIP 압축 해제 위치 | 웹 루트 안의 `_supportk/`를 Apache 규칙으로 차단 |
 
-Choose the split-root ZIP when the host allows a custom document root. This layout does not rely on `.htaccess` to hide application code and runtime files. The host must still route non-file requests such as `/setup` to `public/index.php`: Apache can use the included `.htaccess` when overrides are enabled; nginx or another web server needs an equivalent front-controller rule supplied by the host. Do not use the fixed-root ZIP on a server that ignores `.htaccess`.
+문서 루트를 직접 지정할 수 있다면 분리형 ZIP을 선택하세요. 이 구조는 애플리케이션 코드와 런타임 파일을 감추는 데 `.htaccess`에 의존하지 않습니다. 다만 `/setup`처럼 실제 파일이 없는 요청을 `public/index.php`로 보내야 합니다. Apache는 오버라이드가 허용된 경우 포함된 `.htaccess`를 사용할 수 있고, nginx 등 다른 웹 서버는 호스팅에서 이에 해당하는 프런트 컨트롤러 규칙을 설정해야 합니다. `.htaccess`를 무시하는 서버에는 고정 루트 ZIP을 사용하지 마세요.
 
-The split-root ZIP will return a setup error if PHP's `DOCUMENT_ROOT` does not resolve to its `public/` directory. If the host does not expose a usable document-root setting, use a host that does or validate a server-specific configuration before installing. A custom document root and URL rewrite capability are separate requirements.
+분리형 ZIP은 PHP의 `DOCUMENT_ROOT`가 `public/`으로 확인되지 않으면 설정 오류를 표시합니다. 호스팅에서 사용 가능한 문서 루트 설정을 제공하지 않는다면 다른 호스팅을 사용하거나 서버별 설정을 먼저 검증하세요. 문서 루트 변경과 URL 재작성은 별개의 조건입니다.
 
-## Upload and start the installer
+## 업로드와 설치 시작
 
-1. Back up the database and the current web directory if this is an existing site. For a new installation, create the empty database and record its host, port, database name, user, and password.
-2. For the split-root ZIP, set the host's document root to the target `public/` directory before exposing the uploaded files. Upload the chosen ZIP by FTP or the host file manager and extract it without changing its directory structure. The split-root extracted root contains `public/` and `_supportk/`; only `public/` should be served. For the fixed-root ZIP, extract `index.php`, `.htaccess`, `assets/`, and `_supportk/` into the Apache document root after its access rules are enabled. Preserve `_supportk/active.json` and all other packaged files.
-3. Configure PHP 8.2+, HTTPS, and URL rewriting to `index.php` for requests that are not existing files or directories. For the fixed-root ZIP, verify that Apache applies the included `.htaccess` and denies direct requests to `/_supportk/`; do not enable directory listings. For the split-root ZIP, confirm a direct request to `/_supportk/active.json` cannot retrieve the private file. If either check fails, stop before entering database or Owner details.
-4. Open `https://your-host.example/setup`. The preflight checks PHP extensions, writable runtime storage, HTTPS, and the private-area access rule.
-5. Click **확인 파일 받기**. Upload the downloaded `support-k-install-proof.txt` beside the served `index.php` (inside `public/` for the split-root ZIP), then return to the browser and click the upload confirmation. The application deletes this proof file after a successful check.
+1. 기존 사이트라면 DB와 웹 디렉터리를 백업하세요. 새 설치라면 빈 DB를 만들고 호스트, 포트, DB 이름, 사용자 이름, 비밀번호를 기록하세요.
+2. 분리형 ZIP은 파일을 외부에 노출하기 전에 호스팅 문서 루트를 대상 `public/`으로 지정하세요. 선택한 ZIP을 FTP 또는 파일 관리자로 업로드하고 디렉터리 구조를 유지한 채 압축을 풉니다. 분리형 ZIP의 최상위에는 `public/`과 `_supportk/`가 있으며 `public/`만 제공되어야 합니다. 고정 루트 ZIP은 Apache 차단 규칙을 활성화한 뒤 `index.php`, `.htaccess`, `assets/`, `_supportk/`를 문서 루트에 풉니다. `_supportk/active.json`을 포함한 모든 파일을 유지하세요.
+3. PHP 8.2 이상, HTTPS, 존재하지 않는 파일·디렉터리 요청을 `index.php`로 보내는 URL 재작성을 설정하세요. 고정 루트 ZIP은 Apache가 `.htaccess`를 적용하고 `/_supportk/` 직접 요청을 차단하는지 확인하고 디렉터리 목록을 끄세요. 분리형 ZIP은 `/_supportk/active.json` 직접 요청으로 비공개 파일을 가져올 수 없는지 확인하세요. 어느 검사든 실패하면 DB나 Owner 정보를 입력하기 전에 중단하세요.
+4. `https://your-host.example/setup`을 여세요. 사전 검사는 PHP 확장, 런타임 저장소 쓰기 권한, HTTPS, 비공개 영역 접근 차단을 확인합니다.
+5. **확인 파일 받기**를 누르세요. 받은 `support-k-install-proof.txt`를 서비스되는 `index.php` 옆에 업로드하세요. 분리형 ZIP에서는 `public/` 안입니다. 브라우저로 돌아와 업로드 확인을 누르면 성공 후 애플리케이션이 확인 파일을 삭제합니다.
 
-The proof is deliberate: it demonstrates that the person completing the setup can write to the selected document root. If the check fails, verify FTP ownership and permissions, upload the file beside the correct `index.php`, and confirm that the web server is serving the package root.
+확인 파일은 설치자가 선택한 문서 루트에 파일을 쓸 수 있음을 증명합니다. 실패하면 FTP 소유권·권한, `index.php`와 같은 위치에 업로드했는지, 웹 서버가 올바른 경로를 제공하는지 확인하세요.
 
-## Enter the database and Owner details
+## DB와 Owner 정보 입력
 
-After the upload proof, enter:
+업로드 확인 후 다음을 입력합니다.
 
-1. database host and port, database name, database user, and database password;
-2. a table prefix that starts with a lowercase letter and ends in `_` (the default is `sk_`);
-3. the customer center name and its complete HTTPS base URL, including a subdirectory if applicable; and
-4. the first Owner email address and a password of 12 or more characters and no more than 72 bytes. A multibyte password can reach the byte limit before it reaches 72 characters.
+1. DB 호스트·포트, DB 이름, 사용자 이름, 비밀번호
+2. 소문자로 시작하고 `_`로 끝나는 테이블 접두어(기본값 `sk_`)
+3. 고객센터 이름과 완전한 HTTPS 기본 URL(하위 경로 사용 시 포함)
+4. 첫 Owner 이메일과 12자 이상, 72바이트 이하의 비밀번호. 다국어 비밀번호는 72자 전에 바이트 제한에 도달할 수 있습니다.
 
-The installer does not overwrite tables with the selected prefix. If an earlier attempt was interrupted, retry with the same database settings so the recorded installation state can resume safely. Do not delete `installed.lock` or the private runtime settings to force a second install.
+설치 마법사는 선택한 접두어의 기존 테이블을 덮어쓰지 않습니다. 설치가 중단됐다면 같은 DB 설정으로 다시 시도해 기록된 설치 상태에서 안전하게 재개하세요. 재설치하려고 `installed.lock`이나 비공개 런타임 설정을 삭제하지 마세요.
 
-On success, the page displays a one-time recovery code. Store it in a password manager or another protected offline record before leaving the page. The code is not sent by email in this alpha.
+성공하면 일회용 복구 코드가 표시됩니다. 화면을 떠나기 전에 비밀번호 관리자나 보호된 오프라인 기록에 보관하세요. 이 알파에서는 이메일로 보내지 않습니다.
 
-## Verify the first round trip
+## 첫 문의 흐름 확인
 
-1. Open **운영자 로그인** and sign in with the Owner credentials.
-2. Open the customer ticket form and submit a synthetic ticket. The current proof intentionally uses no email delivery.
-3. From the staff ticket view, send a reply and add a private note.
-4. Open the customer lookup page and send a follow-up. Confirm that the private note is not visible to the customer.
-5. In the knowledge area, check public, draft, and internal records, then exercise create, update, delete, search, and stale-content behavior.
+1. **운영자 로그인**에서 Owner 계정으로 로그인합니다.
+2. 고객 문의 양식에서 가상 문의를 등록합니다. 현재 검증 흐름에는 이메일 발송이 없습니다.
+3. 운영자 문의 화면에서 답변을 보내고 비공개 메모를 남깁니다.
+4. 고객 조회 화면에서 추가 답변을 보내고 비공개 메모가 고객에게 보이지 않는지 확인합니다.
+5. 지식 영역에서 공개·초안·내부 문서의 생성, 수정, 삭제, 검색, 오래된 콘텐츠 처리를 확인합니다.
 
-This confirms the alpha workflow without claiming that email, AI, or another external provider is configured.
+이는 알파의 기본 흐름을 확인하는 절차이며 이메일, AI 또는 다른 외부 제공자 설정을 뜻하지 않습니다.
 
-## Recover an Owner password
+## Owner 비밀번호 복구
 
-Open `/admin/recovery`, enter the Owner email, the recovery code saved during installation, and a new password of 12 or more characters and no more than 72 bytes. The code is stored as a hash and is marked used when the password change succeeds; it can be used once.
+`/admin/recovery`에서 Owner 이메일, 설치 때 저장한 복구 코드, 새 비밀번호(12자 이상, 72바이트 이하)를 입력합니다. 코드는 해시로 저장되며 비밀번호 변경에 성공하면 사용 처리됩니다. 한 번만 사용할 수 있습니다.
 
-If the code is lost, do not remove `installed.lock`, edit runtime settings, or drop application tables. Restore the database and protected runtime files from a known-good backup, or use the host's controlled recovery process before attempting another change. Keep a fresh backup before any database recovery operation.
+코드를 분실했다면 `installed.lock`을 지우거나 런타임 설정을 수정하거나 애플리케이션 테이블을 삭제하지 마세요. 정상 백업에서 DB와 보호된 런타임 파일을 복원하거나 호스팅의 통제된 복구 절차를 이용하세요. DB 복구 작업 전에는 새 백업을 확보하세요.
 
-## Subdirectory and web-server notes
+## 하위 경로와 웹 서버
 
-The installer accepts a base URL containing a path such as `https://your-host.example/support/`. The local root and `/support/` checks passed, but public HTTPS and a real Cafe24 host remain unverified. Keep the exact URL entered in the installer, including its trailing path, when configuring another host.
+설치 마법사는 `https://your-host.example/support/`처럼 경로가 포함된 기본 URL을 허용합니다. 로컬 웹 루트와 `/support/` 검사는 통과했지만 공개 HTTPS 및 실제 상용 공유 호스팅 환경은 검증하지 않았습니다. 다른 호스팅에 설정할 때는 설치 마법사에 입력한 URL과 하위 경로를 정확히 유지하세요.
 
-Both layouts keep release code under `_supportk/releases/` and runtime directories under `_supportk/shared/`. The fixed-root package uses Apache `.htaccess` to deny access to that area. The split-root package places the area outside the configured document root. If a host cannot meet either layout's requirements, do not install there until its server configuration has been checked.
+두 ZIP 모두 릴리스 코드를 `_supportk/releases/`에, 런타임 디렉터리를 `_supportk/shared/`에 둡니다. 고정 루트 ZIP은 Apache `.htaccess`로 해당 영역을 차단하고, 분리형 ZIP은 문서 루트 밖에 둡니다. 호스팅이 두 구조 중 하나의 조건도 만족하지 못하면 서버 설정을 검증하기 전에는 설치하지 마세요.
 
-## Not included in this alpha
+## 이 알파에 포함되지 않은 기능
 
-Attachments, custom forms, Agent account management, AI providers, real email notifications, extension management UI, in-app updating, and a tested deployment on a commercial shared host are not available as supported installation features. The extension contracts and example notifier are development foundations; they do not provide a ready-to-use integration.
+첨부파일, 사용자 정의 양식, Agent 계정 관리, AI 제공자, 실제 이메일 알림, 확장 관리 화면, 앱 내 업데이트, 검증된 상용 공유 호스팅 배포는 지원하지 않습니다. 확장 계약과 예제 알림기는 개발 기반일 뿐 즉시 사용할 수 있는 연동은 아닙니다.

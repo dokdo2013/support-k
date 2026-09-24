@@ -126,7 +126,7 @@ final class PackageVerifier
         $publicFiles = $splitRoot
             ? ['public/index.php', 'public/.htaccess', '_supportk/entry.php']
             : ['index.php', '.htaccess'];
-        foreach (array_merge($publicFiles, ['_supportk/.htaccess', '_supportk/shared/.htaccess', '_supportk/active.json', '_supportk/manifest.json']) as $required) {
+        foreach (array_merge($publicFiles, ['LICENSE', 'LICENSE.ko.md', 'THIRD_PARTY_NOTICES.md', 'THIRD_PARTY_NOTICES.en.md', 'INSTALL.md', 'INSTALL.en.md', '_supportk/.htaccess', '_supportk/shared/.htaccess', '_supportk/active.json', '_supportk/manifest.json']) as $required) {
             $this->requireFile($entries, $required);
         }
         foreach (self::RUNTIME_DIRECTORIES as $required) {

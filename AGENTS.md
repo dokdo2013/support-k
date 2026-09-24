@@ -1,25 +1,28 @@
-# Contributing to Support K
+한국어 | [English](AGENTS.en.md)
 
-Support K is an MIT-licensed application for self-hosted customer support. Keep contributions suitable for a public repository.
+# Support K 기여 지침
 
-## Repository boundaries
+Support K는 직접 설치하는 MIT 라이선스 고객센터 애플리케이션입니다. 공개 저장소에 적합한 내용만 기여하세요.
 
-- Do not commit credentials, private keys, customer records, production exports, uploaded files, local machine paths, deployment destinations, or service account details.
-- Use synthetic fixtures and placeholder values in tests and documentation. Use `example`, `test`, `.invalid`, or clearly marked dummy values for examples.
-- Do not add framework, provider, or frontend assets without recording their exact version, license, and source in `THIRD_PARTY_NOTICES.md`.
-- Keep user configuration and runtime files out of source control. Runtime output belongs under `writable/`; dependencies belong under `vendor/`.
-- Keep the public documentation accurate about what has been tested. Alpha work must not imply that AI providers or a particular hosting environment has been validated.
+## 저장소 경계
 
-## PHP and CodeIgniter
+- 자격 증명, 개인키, 고객 기록, 운영 데이터 내보내기, 업로드 파일, 로컬 기기 경로, 배포 대상, 서비스 계정 정보를 커밋하지 마세요.
+- 테스트와 문서에는 합성 예제와 플레이스홀더를 사용하세요. 예시에는 `example`, `test`, `.invalid` 또는 명확하게 표시한 가짜 값을 사용하세요.
+- 프레임워크, 제공자, 프런트엔드 자산을 추가할 때는 정확한 버전, 라이선스, 출처를 `THIRD_PARTY_NOTICES.md`에 기록하세요.
+- 사용자 설정과 런타임 파일은 소스 관리에서 제외하세요. 런타임 출력은 `writable/`, 의존성은 `vendor/`에 둡니다.
+- 공개 문서에는 실제 검증 범위를 정확히 적으세요. 알파 단계에서 AI 제공자나 특정 호스팅 환경을 검증한 것처럼 표현하지 마세요.
+- 사용자용 문서는 한국어 기본 파일과 대응하는 `.en.md` 영어 파일을 함께 유지하고 서로 전환할 수 있게 연결하세요. 법적 효력이 있는 `LICENSE` 원문은 변경하지 마세요.
 
-- Follow the PHP version and CodeIgniter constraints in `composer.json`.
-- Keep framework configuration changes small and explain behavior changes in the relevant documentation.
-- Validate request input, escape output, and use the framework's database and URL helpers rather than composing SQL or public URLs by hand.
-- Keep external calls behind replaceable contracts. Tests use synthetic data and mocked or local responses; they do not call live providers.
+## PHP와 CodeIgniter
 
-## Verification
+- `composer.json`의 PHP 버전과 CodeIgniter 제약을 따르세요.
+- 프레임워크 설정 변경을 작게 유지하고 관련 문서에 동작 변경을 설명하세요.
+- 요청 입력을 검증하고 출력을 이스케이프하세요. SQL이나 공개 URL을 직접 조합하지 말고 프레임워크의 DB·URL 도우미를 사용하세요.
+- 외부 호출은 교체 가능한 계약 뒤에 두세요. 테스트는 합성 데이터와 모의 또는 로컬 응답을 사용하며 실제 제공자를 호출하지 않습니다.
 
-Run the unit suite and the source audit before submitting a change:
+## 검증
+
+변경을 제출하기 전에 단위 테스트와 소스 감사를 실행하세요.
 
 ```sh
 composer install
@@ -27,4 +30,4 @@ vendor/bin/phpunit
 php packaging/audit-source.php .
 ```
 
-When a check cannot run locally, say why and leave the affected capability marked as unverified. The source audit is an additional signal; it does not replace review of the complete release archive, Git history, dependencies, or hosting behavior.
+로컬에서 검사를 실행할 수 없다면 이유를 알리고 해당 기능을 미검증으로 표시하세요. 소스 감사는 추가 신호일 뿐이며 릴리스 ZIP 전체, Git 이력, 의존성, 호스팅 동작에 대한 검토를 대신하지 않습니다.

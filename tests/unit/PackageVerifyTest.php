@@ -84,6 +84,16 @@ final class PackageVerifyTest extends TestCase
         $this->assertRejected($archive, 'Manifest file list');
     }
 
+    public function testRejectsPackageWithoutEnglishInstallGuide(): void
+    {
+        $archive = $this->createPackage();
+        $zip = $this->open($archive);
+        $this->assertTrue($zip->deleteName('INSTALL.en.md'));
+        $zip->close();
+
+        $this->assertRejected($archive, 'INSTALL.en.md');
+    }
+
     private function createPackage(bool $splitRoot = false): string
     {
         $version = '0.1.0-alpha.1';
@@ -117,6 +127,12 @@ final class PackageVerifyTest extends TestCase
         ], $packages);
 
         $files = [
+            'LICENSE' => 'MIT license text',
+            'LICENSE.ko.md' => 'Korean reference translation',
+            'THIRD_PARTY_NOTICES.md' => 'Korean notices',
+            'THIRD_PARTY_NOTICES.en.md' => 'English notices',
+            'INSTALL.md' => '[English](INSTALL.en.md)',
+            'INSTALL.en.md' => '[한국어](INSTALL.md)',
             '_supportk/.htaccess' => 'Require all denied',
             '_supportk/shared/.htaccess' => 'Require all denied',
             '_supportk/active.json' => json_encode(['version' => $version], JSON_THROW_ON_ERROR),

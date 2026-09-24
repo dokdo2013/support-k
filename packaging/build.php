@@ -70,7 +70,7 @@ function writePackage(string $stage, string $zipPath): void
 
 try {
     // Positive input list. Runtime, tests, original sources and history are never copied.
-    foreach (['app', 'bootstrap', 'modules', 'composer.json', 'composer.lock', 'LICENSE', 'THIRD_PARTY_NOTICES.md'] as $path) {
+    foreach (['app', 'bootstrap', 'modules', 'composer.json', 'composer.lock', 'LICENSE', 'LICENSE.ko.md', 'THIRD_PARTY_NOTICES.md', 'THIRD_PARTY_NOTICES.en.md'] as $path) {
         if (file_exists($root . '/' . $path)) copyTree($root . '/' . $path, $release . '/' . $path);
     }
     $process = proc_open(['composer', 'install', '--no-dev', '--no-interaction', '--no-scripts', '--prefer-dist', '--optimize-autoloader'], [STDIN, STDOUT, STDERR], $pipes, $release);
@@ -83,8 +83,13 @@ try {
     copyTree(__DIR__ . '/public.htaccess', $stage . '/.htaccess');
     copyTree($root . '/public/assets', $stage . '/assets/' . $version);
     copyTree($root . '/LICENSE', $stage . '/LICENSE');
+    copyTree($root . '/LICENSE.ko.md', $stage . '/LICENSE.ko.md');
     copyTree($root . '/THIRD_PARTY_NOTICES.md', $stage . '/THIRD_PARTY_NOTICES.md');
-    if (is_file($root . '/docs/installation.md')) copyTree($root . '/docs/installation.md', $stage . '/INSTALL.md');
+    copyTree($root . '/THIRD_PARTY_NOTICES.en.md', $stage . '/THIRD_PARTY_NOTICES.en.md');
+    $installKo = (string) file_get_contents($root . '/docs/installation.md');
+    $installEn = (string) file_get_contents($root . '/docs/installation.en.md');
+    file_put_contents($stage . '/INSTALL.md', str_replace('[English](installation.en.md)', '[English](INSTALL.en.md)', $installKo));
+    file_put_contents($stage . '/INSTALL.en.md', str_replace('[한국어](installation.md)', '[한국어](INSTALL.md)', $installEn));
     foreach (['cache', 'logs', 'session', 'uploads', 'extensions'] as $directory) mkdir($private . '/shared/' . $directory, 0750, true);
     file_put_contents($private . '/.htaccess', "Require all denied\n");
     file_put_contents($private . '/shared/.htaccess', "Require all denied\n");
@@ -102,7 +107,7 @@ try {
         copyTree($stage . '/.htaccess', $splitStage . '/public/.htaccess');
         copyTree(__DIR__ . '/split-entry.php', $splitStage . '/public/index.php');
         copyTree(__DIR__ . '/entry.php', $splitStage . '/_supportk/entry.php');
-        foreach (['LICENSE', 'THIRD_PARTY_NOTICES.md', 'INSTALL.md'] as $path) {
+        foreach (['LICENSE', 'LICENSE.ko.md', 'THIRD_PARTY_NOTICES.md', 'THIRD_PARTY_NOTICES.en.md', 'INSTALL.md', 'INSTALL.en.md'] as $path) {
             if (is_file($stage . '/' . $path)) copyTree($stage . '/' . $path, $splitStage . '/' . $path);
         }
         writePackage($splitStage, $dist . '/support-k-' . $version . '-split-root.zip');
